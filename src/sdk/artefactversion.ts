@@ -63,6 +63,7 @@ export class ArtefactVersion {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -138,6 +139,7 @@ export class ArtefactVersion {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -209,6 +211,7 @@ export class ArtefactVersion {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -301,6 +304,7 @@ export class ArtefactVersion {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -388,6 +392,7 @@ export class ArtefactVersion {
     const queryParams: string = utils.serializeQueryParams(req);
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;

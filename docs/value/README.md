@@ -126,7 +126,7 @@ The returned values will be the base Application values with the Environment ove
 ```typescript
 import { Test1 } from "test-1";
 import { GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -150,7 +150,7 @@ The returned values will be the "base" values for the Application. The overridde
 ```typescript
 import { Test1 } from "test-1";
 import { GetOrgsOrgIdAppsAppIdValuesResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -173,7 +173,7 @@ Update the value or description of the Shared Value. Shared Values marked as sec
 ```typescript
 import { Test1 } from "test-1";
 import { PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -202,7 +202,7 @@ Update the value or description of the Shared Value. Shared Values marked as sec
 ```typescript
 import { Test1 } from "test-1";
 import { PatchOrgsOrgIdAppsAppIdValuesKeyResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -232,7 +232,7 @@ If a Value is marked as a secret, it will be securely stored. It will not be pos
 ```typescript
 import { Test1 } from "test-1";
 import { PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -264,7 +264,7 @@ If a Value is marked as a secret, it will be securely stored. It will not be pos
 ```typescript
 import { Test1 } from "test-1";
 import { PostOrgsOrgIdAppsAppIdValuesResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -293,7 +293,7 @@ Update the value or description of the Shared Value. Shared Values marked as sec
 ```typescript
 import { Test1 } from "test-1";
 import { PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -324,7 +324,7 @@ Update the value or description of the Shared Value. Shared Values marked as sec
 ```typescript
 import { Test1 } from "test-1";
 import { PutOrgsOrgIdAppsAppIdValuesKeyResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 

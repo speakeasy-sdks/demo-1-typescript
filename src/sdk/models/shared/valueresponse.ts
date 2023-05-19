@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { ValueSourceEnum } from "./valuesourceenum";
+import { ValueSource } from "./valuesource";
 import { Expose, Transform } from "class-transformer";
 
 /**
@@ -61,7 +61,7 @@ export class ValueResponse extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "source" })
-  source: ValueSourceEnum;
+  source: ValueSource;
 
   @SpeakeasyMetadata()
   @Expose({ name: "updated_at" })

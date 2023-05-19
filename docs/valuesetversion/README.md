@@ -28,7 +28,7 @@ A new Value Set Version is created on every modification of a Value inside the a
 ```typescript
 import { Test1 } from "test-1";
 import { GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSetVersionResultOfEnum, ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSetVersionResultOf, ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -53,7 +53,7 @@ Get a single Value Set Version in an Environment of an App
 ```typescript
 import { Test1 } from "test-1";
 import { GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSetVersionResultOfEnum, ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSetVersionResultOf, ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -78,7 +78,7 @@ A new Value Set Version is created on every modification of a Value inside the a
 ```typescript
 import { Test1 } from "test-1";
 import { GetOrgsOrgIdAppsAppIdValueSetVersionsResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSetVersionResultOfEnum, ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSetVersionResultOf, ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -102,7 +102,7 @@ Get a single Value Set Version from the App
 ```typescript
 import { Test1 } from "test-1";
 import { GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSetVersionResultOfEnum, ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSetVersionResultOf, ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -161,7 +161,7 @@ Learn more about reverting in our [docs](https://docs.humanitec.com/reference/co
 ```typescript
 import { Test1 } from "test-1";
 import { PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSetVersionResultOfEnum, ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSetVersionResultOf, ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -194,7 +194,7 @@ import { Test1 } from "test-1";
 import {
   PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyResponse,
 } from "test-1/dist/sdk/models/operations";
-import { ValueSetVersionResultOfEnum, ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSetVersionResultOf, ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -257,7 +257,7 @@ Learn more about reverting in our [docs](https://docs.humanitec.com/reference/co
 ```typescript
 import { Test1 } from "test-1";
 import { PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSetVersionResultOfEnum, ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSetVersionResultOf, ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 
@@ -287,7 +287,7 @@ Learn more about reverting in our [docs](https://docs.humanitec.com/reference/co
 ```typescript
 import { Test1 } from "test-1";
 import { PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyResponse } from "test-1/dist/sdk/models/operations";
-import { ValueSetVersionResultOfEnum, ValueSourceEnum } from "test-1/dist/sdk/models/shared";
+import { ValueSetVersionResultOf, ValueSource } from "test-1/dist/sdk/models/shared";
 
 const sdk = new Test1();
 

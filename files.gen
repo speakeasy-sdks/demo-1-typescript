@@ -260,12 +260,12 @@ src/sdk/models/shared/rolerequest.ts
 src/sdk/models/shared/userrolerequest.ts
 src/sdk/models/shared/userinviterequestrequest.ts
 src/sdk/models/shared/valueresponse.ts
-src/sdk/models/shared/valuesourceenum.ts
+src/sdk/models/shared/valuesource.ts
 src/sdk/models/shared/valuepatchpayloadrequest.ts
 src/sdk/models/shared/valuecreatepayloadrequest.ts
 src/sdk/models/shared/valueeditpayloadrequest.ts
 src/sdk/models/shared/valuesetversionresponse.ts
-src/sdk/models/shared/valuesetversionresultofenum.ts
+src/sdk/models/shared/valuesetversionresultof.ts
 src/sdk/models/shared/jsonpatchresponse.ts
 src/sdk/models/shared/valuesetactionpayloadrequest.ts
 src/sdk/models/shared/workloadprofileresponse.ts

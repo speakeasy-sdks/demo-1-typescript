@@ -55,6 +55,7 @@ export class UserProfile {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -99,6 +100,7 @@ export class UserProfile {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -151,6 +153,7 @@ export class UserProfile {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -199,6 +202,7 @@ export class UserProfile {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -271,6 +275,7 @@ export class UserProfile {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -353,6 +358,7 @@ export class UserProfile {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;

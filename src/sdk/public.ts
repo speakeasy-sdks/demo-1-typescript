@@ -57,6 +57,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -125,6 +126,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -189,6 +191,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -246,6 +249,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -302,6 +306,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -360,6 +365,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -421,6 +427,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -474,6 +481,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -538,6 +546,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -594,6 +603,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -655,6 +665,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -711,6 +722,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -775,6 +787,8 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] =
+      "application/json;q=1, application/json;q=0.7, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -850,6 +864,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -914,6 +929,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -985,6 +1001,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1068,6 +1085,8 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] =
+      "application/json;q=1, application/json;q=0.7, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1148,6 +1167,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1209,6 +1229,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1273,6 +1294,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1343,6 +1365,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1400,6 +1423,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1453,6 +1477,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1516,6 +1541,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1573,6 +1599,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1625,6 +1652,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1684,6 +1712,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1752,6 +1781,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1817,6 +1847,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1885,6 +1916,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -1950,6 +1982,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2015,6 +2048,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2085,6 +2119,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2160,6 +2195,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2230,6 +2266,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2294,6 +2331,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2364,6 +2402,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2430,6 +2469,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2491,6 +2531,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2559,6 +2600,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2624,6 +2666,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2696,6 +2739,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2759,6 +2803,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2824,6 +2869,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2889,6 +2935,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -2954,6 +3001,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3018,6 +3066,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3091,6 +3140,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3156,6 +3206,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3228,6 +3279,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3290,6 +3342,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3352,6 +3405,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3417,6 +3471,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3492,6 +3547,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3563,6 +3619,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3629,6 +3686,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3702,6 +3760,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3767,6 +3826,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3834,6 +3894,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3899,6 +3960,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -3962,6 +4024,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4031,6 +4094,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4103,6 +4167,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4173,6 +4238,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4235,6 +4301,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4305,6 +4372,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4372,6 +4440,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4439,6 +4508,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4509,6 +4579,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4579,6 +4650,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4650,6 +4722,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4720,6 +4793,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4787,6 +4861,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4857,6 +4932,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4930,6 +5006,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -4997,6 +5074,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5063,6 +5141,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5127,6 +5206,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5196,6 +5276,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5258,6 +5339,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5329,6 +5411,7 @@ export class Public {
 
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req);
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5390,6 +5473,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5438,6 +5522,7 @@ export class Public {
     const client: AxiosInstance = this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5510,6 +5595,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5596,6 +5682,8 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] =
+      "application/json;q=1, application/json;q=0.7, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5689,6 +5777,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5764,6 +5853,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5848,6 +5938,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -5937,6 +6028,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6027,6 +6119,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6113,6 +6206,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6199,6 +6293,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6283,6 +6378,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6367,6 +6463,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6451,6 +6548,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6536,6 +6634,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6620,6 +6719,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6709,6 +6809,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6804,6 +6905,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6891,6 +6993,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -6987,6 +7090,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7076,6 +7180,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7171,6 +7276,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7262,6 +7368,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7346,6 +7453,8 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] =
+      "application/json;q=1, application/json;q=0.7, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7434,6 +7543,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7530,6 +7640,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7619,6 +7730,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7714,6 +7826,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7805,6 +7918,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7889,6 +8003,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -7975,6 +8090,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8054,6 +8170,7 @@ export class Public {
     const queryParams: string = utils.serializeQueryParams(req);
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8141,6 +8258,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8225,6 +8343,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8318,6 +8437,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8396,6 +8516,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8485,6 +8606,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8569,6 +8691,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8653,6 +8776,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8750,6 +8874,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8834,6 +8959,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -8914,6 +9040,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9000,6 +9127,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9104,6 +9232,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9188,6 +9317,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9276,6 +9406,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9365,6 +9496,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9452,6 +9584,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9549,6 +9682,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9632,6 +9766,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9732,6 +9867,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "*/*";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9805,6 +9941,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9892,6 +10029,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -9976,6 +10114,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -10060,6 +10199,7 @@ export class Public {
     const headers = { ...reqBodyHeaders, ...config?.headers };
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
+    headers["Accept"] = "application/json;q=1, application/json;q=0";
     headers[
       "user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;

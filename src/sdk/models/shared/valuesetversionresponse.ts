@@ -9,7 +9,7 @@ import {
 } from "../../../internal/utils";
 import { JSONPatchResponse } from "./jsonpatchresponse";
 import { ValueResponse } from "./valueresponse";
-import { ValueSetVersionResultOfEnum } from "./valuesetversionresultofenum";
+import { ValueSetVersionResultOf } from "./valuesetversionresultof";
 import { Expose, Transform, Type } from "class-transformer";
 
 /**
@@ -40,7 +40,7 @@ export class ValueSetVersionResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "result_of" })
-  resultOf: ValueSetVersionResultOfEnum;
+  resultOf: ValueSetVersionResultOf;
 
   @SpeakeasyMetadata()
   @Expose({ name: "source_value_set_version_id" })
