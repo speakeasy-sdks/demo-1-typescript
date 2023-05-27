@@ -9,27 +9,27 @@ import { Expose } from "class-transformer";
  * DeploymentError is an error happening during deployment
  */
 export class DeploymentErrorResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "code" })
-  code: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "code" })
+    code: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "error_type" })
-  errorType: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "error_type" })
+    errorType: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "message" })
-  message: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "message" })
+    message: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "object_id" })
-  objectId: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "object_id" })
+    objectId: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "scope" })
-  scope: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "scope" })
+    scope: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "summary" })
-  summary: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "summary" })
+    summary: string;
 }

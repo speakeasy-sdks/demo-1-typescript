@@ -7,58 +7,54 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdResourcesAccountsAccIdRequest extends SpeakeasyBase {
-  /**
-   * The Resource Account ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=accId",
-  })
-  accId: string;
+    /**
+     * The Resource Account ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=accId" })
+    accId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class GetOrgsOrgIdResourcesAccountsAccIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * A Resource Account with the 'accId' ID is not found or does not belong to the organization.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * A Resource Account with the 'accId' ID is not found or does not belong to the organization.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  /**
-   * The requested Resources Account.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  resourceAccountResponse?: shared.ResourceAccountResponse;
+    /**
+     * The requested Resources Account.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    resourceAccountResponse?: shared.ResourceAccountResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

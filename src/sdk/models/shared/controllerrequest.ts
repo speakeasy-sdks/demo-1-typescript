@@ -10,28 +10,28 @@ import { Expose, Type } from "class-transformer";
  * Controller represents deployment, stateful set etc
  */
 export class ControllerRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "kind" })
-  kind?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "kind" })
+    kind?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "message" })
-  message?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "message" })
+    message?: string;
 
-  @SpeakeasyMetadata({ elemType: PodStateRequest })
-  @Expose({ name: "pods" })
-  @Type(() => PodStateRequest)
-  pods?: PodStateRequest[];
+    @SpeakeasyMetadata({ elemType: PodStateRequest })
+    @Expose({ name: "pods" })
+    @Type(() => PodStateRequest)
+    pods?: PodStateRequest[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "replicas" })
-  replicas?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "replicas" })
+    replicas?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "revision" })
-  revision?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "revision" })
+    revision?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: string;
 }

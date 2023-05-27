@@ -9,23 +9,23 @@ import { Expose } from "class-transformer";
  * Each Workload Profile has one or more Versions associated with it. In order to add a version, a Workload Profile must first be created.
  */
 export class WorkloadProfileVersionRequest extends SpeakeasyBase {
-  /**
-   * A map of Features. If referencing built in Humanitec features, the fully qualified feature name must be used: e.g. `humanitec/annotations`.
-   *
-   * @remarks
-   *
-   * {
-   *
-   * }
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "features" })
-  features?: Record<string, any>;
+    /**
+     * A map of Features. If referencing built in Humanitec features, the fully qualified feature name must be used: e.g. `humanitec/annotations`.
+     *
+     * @remarks
+     *
+     * {
+     *
+     * }
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "features" })
+    features?: Record<string, any>;
 
-  /**
-   * Notes
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "notes" })
-  notes?: string;
+    /**
+     * Notes
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "notes" })
+    notes?: string;
 }

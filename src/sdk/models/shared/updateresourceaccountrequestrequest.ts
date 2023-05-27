@@ -9,17 +9,17 @@ import { Expose } from "class-transformer";
  * UpdateResourceAccountRequest describes the request to update the security account details.
  */
 export class UpdateResourceAccountRequestRequest extends SpeakeasyBase {
-  /**
-   * Credentials associated with the account.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "credentials" })
-  credentials?: Record<string, any>;
+    /**
+     * Credentials associated with the account.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "credentials" })
+    credentials?: Record<string, any>;
 
-  /**
-   * Display name.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name?: string;
+    /**
+     * Display name.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name?: string;
 }

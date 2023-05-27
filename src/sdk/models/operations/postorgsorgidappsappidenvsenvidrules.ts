@@ -7,80 +7,74 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdAppsAppIdEnvsEnvIdRulesRequest extends SpeakeasyBase {
-  /**
-   * The definition of the Automation Rule.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  automationRuleRequest: shared.AutomationRuleRequest;
+    /**
+     * The definition of the Automation Rule.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    automationRuleRequest: shared.AutomationRuleRequest;
 
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * The Environment ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=envId",
-  })
-  envId: string;
+    /**
+     * The Environment ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=envId" })
+    envId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PostOrgsOrgIdAppsAppIdEnvsEnvIdRulesResponse extends SpeakeasyBase {
-  /**
-   * The AutomationRule
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  automationRuleResponse?: shared.AutomationRuleResponse;
+    /**
+     * The AutomationRule
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    automationRuleResponse?: shared.AutomationRuleResponse;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * The input was not a valid Automation Rule.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  errorInfoResponse?: shared.ErrorInfoResponse;
+    /**
+     * The input was not a valid Automation Rule.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    errorInfoResponse?: shared.ErrorInfoResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

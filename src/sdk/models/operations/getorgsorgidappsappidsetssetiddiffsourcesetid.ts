@@ -7,82 +7,74 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdRequest extends SpeakeasyBase {
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * ID of the Deployment Set.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=setId",
-  })
-  setId: string;
+    /**
+     * ID of the Deployment Set.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=setId" })
+    setId: string;
 
-  /**
-   * ID of the Deployment Set to diff against.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=sourceSetId",
-  })
-  sourceSetId: string;
+    /**
+     * ID of the Deployment Set to diff against.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=sourceSetId" })
+    sourceSetId: string;
 }
 
 export class GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * A Deployment Delta which if applied to the Set with ID `sourceSetId` gives the Set with ID `setId`.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  plainDeltaResponse?: shared.PlainDeltaResponse;
+    /**
+     * A Deployment Delta which if applied to the Set with ID `sourceSetId` gives the Set with ID `setId`.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    plainDeltaResponse?: shared.PlainDeltaResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * No Deployment Set with ID `setId` or `sourceSetId` found in Application.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  getOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetId404ApplicationJSONString?: string;
+    /**
+     * No Deployment Set with ID `setId` or `sourceSetId` found in Application.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    getOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetId404ApplicationJSONString?: string;
 }

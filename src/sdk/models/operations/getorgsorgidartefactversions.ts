@@ -7,80 +7,74 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdArtefactVersionsRequest extends SpeakeasyBase {
-  /**
-   * (Optional) Filter for non-archived Artefact Versions. If no filter is defined only non-archived Artefact Versions are returned, if the filter is true both archived and non-archived Versions are returned.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=archived",
-  })
-  archived?: string;
+    /**
+     * (Optional) Filter for non-archived Artefact Versions. If no filter is defined only non-archived Artefact Versions are returned, if the filter is true both archived and non-archived Versions are returned.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=archived" })
+    archived?: string;
 
-  /**
-   * (Optional) Filter Artefact Versions by name.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=name" })
-  name?: string;
+    /**
+     * (Optional) Filter Artefact Versions by name.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=name" })
+    name?: string;
 
-  /**
-   * The organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * (Optional) Filter Artefact Versions by the reference to a Version of the same Artefact. This cannot be used together with `name`.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=reference",
-  })
-  reference?: string;
+    /**
+     * (Optional) Filter Artefact Versions by the reference to a Version of the same Artefact. This cannot be used together with `name`.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=reference" })
+    reference?: string;
 }
 
 export class GetOrgsOrgIdArtefactVersionsResponse extends SpeakeasyBase {
-  /**
-   * A list of Artefact Versions registered with your organization.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ elemType: shared.ArtefactVersionResponse })
-  artefactVersionResponses?: shared.ArtefactVersionResponse[];
+    /**
+     * A list of Artefact Versions registered with your organization.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ elemType: shared.ArtefactVersionResponse })
+    artefactVersionResponses?: shared.ArtefactVersionResponse[];
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Bad request.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Bad request.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

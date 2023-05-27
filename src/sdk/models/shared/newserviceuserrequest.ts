@@ -9,24 +9,24 @@ import { Expose } from "class-transformer";
  * NewServiceUser holds the definition of a new service user.
  */
 export class NewServiceUserRequest extends SpeakeasyBase {
-  /**
-   * The email address that should get notifications about this service user. (Optional)
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "email" })
-  email?: string;
+    /**
+     * The email address that should get notifications about this service user. (Optional)
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "email" })
+    email?: string;
 
-  /**
-   * The name that should be shown for this service user.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name?: string;
+    /**
+     * The name that should be shown for this service user.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name?: string;
 
-  /**
-   * The role that the service user should have on the organization it is created in
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "role" })
-  role?: string;
+    /**
+     * The role that the service user should have on the organization it is created in
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "role" })
+    role?: string;
 }

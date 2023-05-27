@@ -6,26 +6,24 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class DeleteTokensTokenIdRequest extends SpeakeasyBase {
-  /**
-   * The token ID
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=tokenId",
-  })
-  tokenId: string;
+    /**
+     * The token ID
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=tokenId" })
+    tokenId: string;
 }
 
 export class DeleteTokensTokenIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

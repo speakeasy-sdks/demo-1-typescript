@@ -7,80 +7,74 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest extends SpeakeasyBase {
-  /**
-   * Definition of the new Shared Value.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  valueCreatePayloadRequest: shared.ValueCreatePayloadRequest;
+    /**
+     * Definition of the new Shared Value.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    valueCreatePayloadRequest: shared.ValueCreatePayloadRequest;
 
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * The Environment ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=envId",
-  })
-  envId: string;
+    /**
+     * The Environment ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=envId" })
+    envId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Input not valid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Input not valid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Shared Value successfully created.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  valueResponse?: shared.ValueResponse;
+    /**
+     * Shared Value successfully created.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    valueResponse?: shared.ValueResponse;
 }

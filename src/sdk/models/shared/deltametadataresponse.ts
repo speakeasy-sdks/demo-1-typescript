@@ -6,37 +6,37 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
 export class DeltaMetadataResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "archived" })
-  archived: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "archived" })
+    archived: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "contributers" })
-  contributers?: string[];
+    @SpeakeasyMetadata()
+    @Expose({ name: "contributers" })
+    contributers?: string[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  createdAt: Date;
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt: Date;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  createdBy: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    createdBy: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "env_id" })
-  envId?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "env_id" })
+    envId?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "last_modified_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  lastModifiedAt: Date;
+    @SpeakeasyMetadata()
+    @Expose({ name: "last_modified_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    lastModifiedAt: Date;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "shared" })
-  shared?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "shared" })
+    shared?: boolean;
 }

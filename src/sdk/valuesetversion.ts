@@ -15,875 +15,861 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class ValueSetVersion {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+    }
 
-  /**
-   * List Value Set Versions in an Environment of an App
-   *
-   * @remarks
-   * A new Value Set Version is created on every modification of a Value inside the an Environment of an App. In case this environment has no overrides the response is the same as the App level endpoint.
-   */
-  async getOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersions(
-    req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsRequest(
-          req
+    /**
+     * List Value Set Versions in an Environment of an App
+     *
+     * @remarks
+     * A new Value Set Version is created on every modification of a Value inside the an Environment of an App. In case this environment has no overrides the response is the same as the App level endpoint.
+     */
+    async getOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersions(
+        req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    const client: AxiosInstance = this._defaultClient;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsResponse =
-      new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueSetVersionResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.valueSetVersionResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueSetVersionResponse,
-            resFieldDepth
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsResponse =
+            new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueSetVersionResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.valueSetVersionResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueSetVersionResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get a single Value Set Version in an Environment of an App
+     */
+    async getOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionId(
+        req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRequest(
+                    req
+                );
+        }
 
-  /**
-   * Get a single Value Set Version in an Environment of an App
-   */
-  async getOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionId(
-    req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    const client: AxiosInstance = this._defaultClient;
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdResponse =
-      new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueSetVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueSetVersionResponse
-          );
+
+        const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdResponse =
+            new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueSetVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueSetVersionResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * List Value Set Versions in the App
+     *
+     * @remarks
+     * A new Value Set Version is created on every modification of a Value inside the app.
+     */
+    async getOrgsOrgIdAppsAppIdValueSetVersions(
+        req: operations.GetOrgsOrgIdAppsAppIdValueSetVersionsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdValueSetVersionsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdValueSetVersionsRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * List Value Set Versions in the App
-   *
-   * @remarks
-   * A new Value Set Version is created on every modification of a Value inside the app.
-   */
-  async getOrgsOrgIdAppsAppIdValueSetVersions(
-    req: operations.GetOrgsOrgIdAppsAppIdValueSetVersionsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdValueSetVersionsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdValueSetVersionsRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/value-set-versions",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdValueSetVersionsResponse =
-      new operations.GetOrgsOrgIdAppsAppIdValueSetVersionsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueSetVersionResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.valueSetVersionResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueSetVersionResponse,
-            resFieldDepth
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get a single Value Set Version from the App
-   */
-  async getOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionId(
-    req: operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/value-set-versions",
+            req
         );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetOrgsOrgIdAppsAppIdValueSetVersionsResponse =
+            new operations.GetOrgsOrgIdAppsAppIdValueSetVersionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueSetVersionResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.valueSetVersionResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueSetVersionResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdResponse =
-      new operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+    /**
+     * Get a single Value Set Version from the App
+     */
+    async getOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionId(
+        req: operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRequest(req);
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueSetVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueSetVersionResponse
-          );
-        }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
-        }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Purge the value of a specific Shared Value from the App Environment Version history.
-   *
-   * @remarks
-   * Purging permanently removes the value of a specific Shared Value in an application. A purged value is no longer accessible, can't be restored and can't be used
-   * by deployments referencing a Value Set Version where the value was present.
-   *
-   * Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
-   *
-   */
-  async postOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKey(
-    req: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/purge/{key}",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueSetActionPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const client: AxiosInstance = this._defaultClient;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyResponse =
-      new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-      );
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdResponse =
+            new operations.GetOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueSetVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueSetVersionResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Purge the value of a specific Shared Value from the App Environment Version history.
+     *
+     * @remarks
+     * Purging permanently removes the value of a specific Shared Value in an application. A purged value is no longer accessible, can't be restored and can't be used
+     * by deployments referencing a Value Set Version where the value was present.
+     *
+     * Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
+     *
+     */
+    async postOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKey(
+        req: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyRequest(
+                    req
+                );
+        }
 
-  /**
-   * Restore a Value Set Version in an Environment of an App
-   *
-   * @remarks
-   * Restore the values of all Shared Values in an environment from a specific version. Keys not existing in the selected version are deleted.
-   *
-   * Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-   *
-   */
-  async postOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestore(
-    req: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/purge/{key}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore",
-      req
-    );
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueSetActionPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreResponse =
-      new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueSetActionPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueSetVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueSetVersionResponse
-          );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyResponse =
+            new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdPurgeKeyResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Restore a Value Set Version in an Environment of an App
+     *
+     * @remarks
+     * Restore the values of all Shared Values in an environment from a specific version. Keys not existing in the selected version are deleted.
+     *
+     * Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
+     *
+     */
+    async postOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestore(
+        req: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreRequest(
+                    req
+                );
+        }
 
-  /**
-   * Restore a specific key from the Value Set Version in an Environment of an App
-   *
-   * @remarks
-   * Restore the values of a single Shared Value in an Environment from a specific version.
-   *
-   * Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-   *
-   */
-  async postOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKey(
-    req: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore/{key}",
-      req
-    );
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueSetActionPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyResponse =
-      new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueSetActionPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueSetVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueSetVersionResponse
-          );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreResponse =
+            new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueSetVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueSetVersionResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Restore a specific key from the Value Set Version in an Environment of an App
+     *
+     * @remarks
+     * Restore the values of a single Shared Value in an Environment from a specific version.
+     *
+     * Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
+     *
+     */
+    async postOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKey(
+        req: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyRequest(
+                    req
+                );
+        }
 
-  /**
-   * Purge the value of a specific Shared Value from the App Version history.
-   *
-   * @remarks
-   * Purging permanently removes the value of a specific Shared Value in an Application. A purged value is no longer accessible, can't be restored and can't be used
-   * by deployments referencing a Value Set Version where the value was present.
-   *
-   * Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
-   *
-   */
-  async postOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKey(
-    req: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/value-set-versions/{valueSetVersionId}/restore/{key}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/purge/{key}",
-      req
-    );
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueSetActionPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyResponse =
-      new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueSetActionPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyResponse =
+            new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValueSetVersionsValueSetVersionIdRestoreKeyResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueSetVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueSetVersionResponse
+                    );
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Purge the value of a specific Shared Value from the App Version history.
+     *
+     * @remarks
+     * Purging permanently removes the value of a specific Shared Value in an Application. A purged value is no longer accessible, can't be restored and can't be used
+     * by deployments referencing a Value Set Version where the value was present.
+     *
+     * Learn more about purging in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#purge).
+     *
+     */
+    async postOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKey(
+        req: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyRequest(
+                    req
+                );
+        }
 
-  /**
-   * Restore a Value Set Version in an App
-   *
-   * @remarks
-   * Restore the values of all Shared Values in an application from a specific version. Keys not existing in the selected version are deleted.
-   *
-   * Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-   *
-   */
-  async postOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestore(
-    req: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/purge/{key}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore",
-      req
-    );
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueSetActionPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreResponse =
-      new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueSetActionPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueSetVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueSetVersionResponse
-          );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyResponse =
+            new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdPurgeKeyResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Restore a Value Set Version in an App
+     *
+     * @remarks
+     * Restore the values of all Shared Values in an application from a specific version. Keys not existing in the selected version are deleted.
+     *
+     * Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
+     *
+     */
+    async postOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestore(
+        req: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreRequest(
+                    req
+                );
+        }
 
-  /**
-   * Restore a specific key from the Value Set Version in an App
-   *
-   * @remarks
-   * Restore the values of a single Shared Value in an application from a specific version.
-   *
-   * Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
-   *
-   */
-  async postOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKey(
-    req: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore/{key}",
-      req
-    );
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueSetActionPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyResponse =
-      new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueSetActionPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueSetVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueSetVersionResponse
-          );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreResponse =
+            new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueSetVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueSetVersionResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Restore a specific key from the Value Set Version in an App
+     *
+     * @remarks
+     * Restore the values of a single Shared Value in an application from a specific version.
+     *
+     * Learn more about reverting in our [docs](https://docs.humanitec.com/reference/concepts/app-config/shared-app-values#revert).
+     *
+     */
+    async postOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKey(
+        req: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req =
+                new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyRequest(
+                    req
+                );
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/value-set-versions/{valueSetVersionId}/restore/{key}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueSetActionPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyResponse =
+            new operations.PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyResponse(
+                {
+                    statusCode: httpRes.status,
+                    contentType: contentType,
+                    rawResponse: httpRes,
+                }
+            );
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueSetVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueSetVersionResponse
+                    );
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

@@ -7,36 +7,34 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdEnvTypesRequest extends SpeakeasyBase {
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class GetOrgsOrgIdEnvTypesResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * A list of Environment Types.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ elemType: shared.EnvironmentTypeResponse })
-  environmentTypeResponses?: shared.EnvironmentTypeResponse[];
+    /**
+     * A list of Environment Types.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ elemType: shared.EnvironmentTypeResponse })
+    environmentTypeResponses?: shared.EnvironmentTypeResponse[];
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

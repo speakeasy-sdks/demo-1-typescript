@@ -7,56 +7,54 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdArtefactsRequest extends SpeakeasyBase {
-  /**
-   * (Optional) Filter Artefacts by name.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=name" })
-  name?: string;
+    /**
+     * (Optional) Filter Artefacts by name.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=name" })
+    name?: string;
 
-  /**
-   * The organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * (Optional) Filter Artefacts by type.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=type" })
-  type?: string;
+    /**
+     * (Optional) Filter Artefacts by type.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=type" })
+    type?: string;
 }
 
 export class GetOrgsOrgIdArtefactsResponse extends SpeakeasyBase {
-  /**
-   * The list of Artefacts within the organization.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ elemType: shared.ArtefactResponse })
-  artefactResponses?: shared.ArtefactResponse[];
+    /**
+     * The list of Artefacts within the organization.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ elemType: shared.ArtefactResponse })
+    artefactResponses?: shared.ArtefactResponse[];
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

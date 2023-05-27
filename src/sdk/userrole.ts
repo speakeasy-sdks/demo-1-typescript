@@ -15,1075 +15,1028 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class UserRole {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Remove the role of a User on an Application
-   */
-  async deleteOrgsOrgIdAppsAppIdUsersUserId(
-    req: operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/users/{userId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdResponse =
-      new operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case [204, 404].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+    /**
+     * Remove the role of a User on an Application
+     */
+    async deleteOrgsOrgIdAppsAppIdUsersUserId(
+        req: operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/users/{userId}",
+            req
+        );
 
-  /**
-   * Remove the role of a User on an Environment Type
-   */
-  async deleteOrgsOrgIdEnvTypesEnvTypeUsersUserId(
-    req: operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest(
-        req
-      );
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/env-types/{envType}/users/{userId}",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse =
-      new operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case [204, 404].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Remove the role of a User on an Organization
-   */
-  async deleteOrgsOrgIdUsersUserId(
-    req: operations.DeleteOrgsOrgIdUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdUsersUserIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/users/{userId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdUsersUserIdResponse =
-      new operations.DeleteOrgsOrgIdUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case [204, 404].includes(httpRes?.status):
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+        const res: operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdResponse =
+            new operations.DeleteOrgsOrgIdAppsAppIdUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case [204, 404].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * List Users with roles in an App
-   */
-  async getOrgsOrgIdAppsAppIdUsers(
-    req: operations.GetOrgsOrgIdAppsAppIdUsersRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdUsersResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdUsersRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/users",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdUsersResponse =
-      new operations.GetOrgsOrgIdAppsAppIdUsersResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.userRoleResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse,
-            resFieldDepth
-          );
+    /**
+     * Remove the role of a User on an Environment Type
+     */
+    async deleteOrgsOrgIdEnvTypesEnvTypeUsersUserId(
+        req: operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest(req);
         }
-        break;
-      case httpRes?.status == 404:
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/env-types/{envType}/users/{userId}",
+            req
+        );
 
-  /**
-   * Get the role of a User on an Application
-   */
-  async getOrgsOrgIdAppsAppIdUsersUserId(
-    req: operations.GetOrgsOrgIdAppsAppIdUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdUsersUserIdRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/users/{userId}",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdUsersUserIdResponse =
-      new operations.GetOrgsOrgIdAppsAppIdUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse =
+            new operations.DeleteOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case [204, 404].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 404:
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Get the role of a User on an Environment Type
-   */
-  async getOrgsOrgIdEnvTypesEnvTypeUsersUserId(
-    req: operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/env-types/{envType}/users/{userId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse =
-      new operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse
-          );
+    /**
+     * Remove the role of a User on an Organization
+     */
+    async deleteOrgsOrgIdUsersUserId(
+        req: operations.DeleteOrgsOrgIdUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdUsersUserIdRequest(req);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/users/{userId}", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * List Users with roles in an Organization
-   */
-  async getOrgsOrgIdUsers(
-    req: operations.GetOrgsOrgIdUsersRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdUsersResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdUsersRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/users", req);
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdUsersResponse =
-      new operations.GetOrgsOrgIdUsersResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.userRoleResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse,
-            resFieldDepth
-          );
+        const res: operations.DeleteOrgsOrgIdUsersUserIdResponse =
+            new operations.DeleteOrgsOrgIdUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case [204, 404].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 404:
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Get the role of a User on an Organization
-   */
-  async getOrgsOrgIdUsersUserId(
-    req: operations.GetOrgsOrgIdUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdUsersUserIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/users/{userId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdUsersUserIdResponse =
-      new operations.GetOrgsOrgIdUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse
-          );
+    /**
+     * List Users with roles in an App
+     */
+    async getOrgsOrgIdAppsAppIdUsers(
+        req: operations.GetOrgsOrgIdAppsAppIdUsersRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdUsersResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdUsersRequest(req);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/apps/{appId}/users", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Update the role of a User on an Application
-   */
-  async patchOrgsOrgIdAppsAppIdUsersUserId(
-    req: operations.PatchOrgsOrgIdAppsAppIdUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdAppsAppIdUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PatchOrgsOrgIdAppsAppIdUsersUserIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/users/{userId}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "roleRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PatchOrgsOrgIdAppsAppIdUsersUserIdResponse =
-      new operations.PatchOrgsOrgIdAppsAppIdUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse
-          );
+        const res: operations.GetOrgsOrgIdAppsAppIdUsersResponse =
+            new operations.GetOrgsOrgIdAppsAppIdUsersResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.userRoleResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * Get the role of a User on an Application
+     */
+    async getOrgsOrgIdAppsAppIdUsersUserId(
+        req: operations.GetOrgsOrgIdAppsAppIdUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdUsersUserIdRequest(req);
         }
-        break;
-      case httpRes?.status == 404:
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/users/{userId}",
+            req
+        );
 
-  /**
-   * Update the role of a User on an Environment Type
-   */
-  async patchOrgsOrgIdEnvTypesEnvTypeUsersUserId(
-    req: operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/env-types/{envType}/users/{userId}",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "roleRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse =
-      new operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.GetOrgsOrgIdAppsAppIdUsersUserIdResponse =
+            new operations.GetOrgsOrgIdAppsAppIdUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
         }
-        break;
-      case httpRes?.status == 404:
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Update the role of a User on an Organization
-   */
-  async patchOrgsOrgIdUsersUserId(
-    req: operations.PatchOrgsOrgIdUsersUserIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdUsersUserIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PatchOrgsOrgIdUsersUserIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/users/{userId}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "roleRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PatchOrgsOrgIdUsersUserIdResponse =
-      new operations.PatchOrgsOrgIdUsersUserIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse
-          );
+    /**
+     * Get the role of a User on an Environment Type
+     */
+    async getOrgsOrgIdEnvTypesEnvTypeUsersUserId(
+        req: operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest(req);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/env-types/{envType}/users/{userId}",
+            req
+        );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Adds a User to an Application with a Role
-   */
-  async postOrgsOrgIdAppsAppIdUsers(
-    req: operations.PostOrgsOrgIdAppsAppIdUsersRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdUsersResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdAppsAppIdUsersRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/users",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "userRoleRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdUsersResponse =
-      new operations.PostOrgsOrgIdAppsAppIdUsersResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse
-          );
+        const res: operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse =
+            new operations.GetOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * List Users with roles in an Organization
+     */
+    async getOrgsOrgIdUsers(
+        req: operations.GetOrgsOrgIdUsersRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdUsersResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdUsersRequest(req);
         }
-        break;
-      case [404, 422].includes(httpRes?.status):
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/users", req);
 
-  /**
-   * Adds a User to an Environment Type with a Role
-   */
-  async postOrgsOrgIdEnvTypesEnvTypeUsers(
-    req: operations.PostOrgsOrgIdEnvTypesEnvTypeUsersRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdEnvTypesEnvTypeUsersResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdEnvTypesEnvTypeUsersRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/env-types/{envType}/users",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "userRoleRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdEnvTypesEnvTypeUsersResponse =
-      new operations.PostOrgsOrgIdEnvTypesEnvTypeUsersResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.GetOrgsOrgIdUsersResponse = new operations.GetOrgsOrgIdUsersResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.userRoleResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
         }
-        break;
-      case httpRes?.status == 404:
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Invites a user to an Organization with a specified role.
-   */
-  async postOrgsOrgIdInvitations(
-    req: operations.PostOrgsOrgIdInvitationsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdInvitationsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdInvitationsRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/invitations",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "userInviteRequestRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdInvitationsResponse =
-      new operations.PostOrgsOrgIdInvitationsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.userRoleResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.userRoleResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.UserRoleResponse,
-            resFieldDepth
-          );
+    /**
+     * Get the role of a User on an Organization
+     */
+    async getOrgsOrgIdUsersUserId(
+        req: operations.GetOrgsOrgIdUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdUsersUserIdRequest(req);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/users/{userId}", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        break;
+
+        const res: operations.GetOrgsOrgIdUsersUserIdResponse =
+            new operations.GetOrgsOrgIdUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Update the role of a User on an Application
+     */
+    async patchOrgsOrgIdAppsAppIdUsersUserId(
+        req: operations.PatchOrgsOrgIdAppsAppIdUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdAppsAppIdUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdAppsAppIdUsersUserIdRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/users/{userId}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "roleRequest", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PatchOrgsOrgIdAppsAppIdUsersUserIdResponse =
+            new operations.PatchOrgsOrgIdAppsAppIdUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Update the role of a User on an Environment Type
+     */
+    async patchOrgsOrgIdEnvTypesEnvTypeUsersUserId(
+        req: operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/env-types/{envType}/users/{userId}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "roleRequest", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse =
+            new operations.PatchOrgsOrgIdEnvTypesEnvTypeUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Update the role of a User on an Organization
+     */
+    async patchOrgsOrgIdUsersUserId(
+        req: operations.PatchOrgsOrgIdUsersUserIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdUsersUserIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdUsersUserIdRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/users/{userId}", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "roleRequest", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PatchOrgsOrgIdUsersUserIdResponse =
+            new operations.PatchOrgsOrgIdUsersUserIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Adds a User to an Application with a Role
+     */
+    async postOrgsOrgIdAppsAppIdUsers(
+        req: operations.PostOrgsOrgIdAppsAppIdUsersRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdUsersResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdAppsAppIdUsersRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/apps/{appId}/users", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "userRoleRequest", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdAppsAppIdUsersResponse =
+            new operations.PostOrgsOrgIdAppsAppIdUsersResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case [404, 422].includes(httpRes?.status):
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Adds a User to an Environment Type with a Role
+     */
+    async postOrgsOrgIdEnvTypesEnvTypeUsers(
+        req: operations.PostOrgsOrgIdEnvTypesEnvTypeUsersRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdEnvTypesEnvTypeUsersResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdEnvTypesEnvTypeUsersRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/env-types/{envType}/users",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "userRoleRequest", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdEnvTypesEnvTypeUsersResponse =
+            new operations.PostOrgsOrgIdEnvTypesEnvTypeUsersResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Invites a user to an Organization with a specified role.
+     */
+    async postOrgsOrgIdInvitations(
+        req: operations.PostOrgsOrgIdInvitationsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdInvitationsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdInvitationsRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/invitations", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "userInviteRequestRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdInvitationsResponse =
+            new operations.PostOrgsOrgIdInvitationsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.userRoleResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.userRoleResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.UserRoleResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                break;
+        }
+
+        return res;
+    }
 }

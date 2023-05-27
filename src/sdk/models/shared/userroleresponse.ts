@@ -9,59 +9,59 @@ import { Expose } from "class-transformer";
  * UserRole holds the mapping of role to user for a particular object.
  */
 export class UserRoleResponse extends SpeakeasyBase {
-  /**
-   * The time the user was first registered with Humanitec
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  createdAt: string;
+    /**
+     * The time the user was first registered with Humanitec
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    createdAt: string;
 
-  /**
-   * The email address of the user from the profile
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "email" })
-  email?: string;
+    /**
+     * The email address of the user from the profile
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "email" })
+    email?: string;
 
-  /**
-   * The User ID for this user
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * The User ID for this user
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  /**
-   * The status of an invitation (If applicable)
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "invite" })
-  invite?: string;
+    /**
+     * The status of an invitation (If applicable)
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "invite" })
+    invite?: string;
 
-  /**
-   * The name the user goes by
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The name the user goes by
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * The role that this user holds
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "role" })
-  role: string;
+    /**
+     * The role that this user holds
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "role" })
+    role: string;
 
-  /**
-   * The type of the account. Could be user, service or system
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * The type of the account. Could be user, service or system
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 
-  /**
-   * The user ID that hold the role
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "user" })
-  user?: string;
+    /**
+     * The user ID that hold the role
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "user" })
+    user?: string;
 }

@@ -17,329 +17,312 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class EnvironmentType {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Deletes an Environment Type
-   *
-   * @remarks
-   * Deletes a specific Environment Type from an Organization. If there are Environments with this Type in the Organization, the operation will fail.
-   */
-  async deleteOrgsOrgIdEnvTypesEnvTypeId(
-    req: operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/env-types/{envTypeId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] =
-      "application/json;q=1, application/json;q=0.7, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdResponse =
-      new operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.environmentTypeResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.EnvironmentTypeResponse
-          );
+    /**
+     * Deletes an Environment Type
+     *
+     * @remarks
+     * Deletes a specific Environment Type from an Organization. If there are Environments with this Type in the Organization, the operation will fail.
+     */
+    async deleteOrgsOrgIdEnvTypesEnvTypeId(
+        req: operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdRequest(req);
         }
-        break;
-      case [401, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/env-types/{envTypeId}", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 409:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.deleteOrgsOrgIdEnvTypesEnvTypeId409ApplicationJSONObjects =
-            utils.objectToClass(httpRes?.data);
+
+        const res: operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdResponse =
+            new operations.DeleteOrgsOrgIdEnvTypesEnvTypeIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.environmentTypeResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EnvironmentTypeResponse
+                    );
+                }
+                break;
+            case [401, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 409:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.deleteOrgsOrgIdEnvTypesEnvTypeId409ApplicationJSONObjects =
+                        utils.objectToClass(httpRes?.data);
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * List all Environment Types
-   *
-   * @remarks
-   * Lists all Environment Types in an Organization.
-   */
-  async getOrgsOrgIdEnvTypes(
-    req: operations.GetOrgsOrgIdEnvTypesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdEnvTypesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdEnvTypesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/env-types",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdEnvTypesResponse =
-      new operations.GetOrgsOrgIdEnvTypesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.environmentTypeResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.environmentTypeResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.EnvironmentTypeResponse,
-            resFieldDepth
-          );
+    /**
+     * List all Environment Types
+     *
+     * @remarks
+     * Lists all Environment Types in an Organization.
+     */
+    async getOrgsOrgIdEnvTypes(
+        req: operations.GetOrgsOrgIdEnvTypesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdEnvTypesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdEnvTypesRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/env-types", req);
 
-  /**
-   * Get an Environment Type
-   *
-   * @remarks
-   * Gets a specific Environment Type within an Organization.
-   */
-  async getOrgsOrgIdEnvTypesEnvTypeId(
-    req: operations.GetOrgsOrgIdEnvTypesEnvTypeIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdEnvTypesEnvTypeIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdEnvTypesEnvTypeIdRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/env-types/{envTypeId}",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdEnvTypesEnvTypeIdResponse =
-      new operations.GetOrgsOrgIdEnvTypesEnvTypeIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.environmentTypeResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.EnvironmentTypeResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.GetOrgsOrgIdEnvTypesResponse =
+            new operations.GetOrgsOrgIdEnvTypesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.environmentTypeResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.environmentTypeResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EnvironmentTypeResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Add a new Environment Type
-   *
-   * @remarks
-   * Adds a new Environment Type to an Organization.
-   */
-  async postOrgsOrgIdEnvTypes(
-    req: operations.PostOrgsOrgIdEnvTypesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdEnvTypesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdEnvTypesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/env-types",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "environmentTypeRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdEnvTypesResponse =
-      new operations.PostOrgsOrgIdEnvTypesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 201:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.environmentTypeResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.EnvironmentTypeResponse
-          );
+    /**
+     * Get an Environment Type
+     *
+     * @remarks
+     * Gets a specific Environment Type within an Organization.
+     */
+    async getOrgsOrgIdEnvTypesEnvTypeId(
+        req: operations.GetOrgsOrgIdEnvTypesEnvTypeIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdEnvTypesEnvTypeIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdEnvTypesEnvTypeIdRequest(req);
         }
-        break;
-      case [400, 401, 409].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/env-types/{envTypeId}", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.GetOrgsOrgIdEnvTypesEnvTypeIdResponse =
+            new operations.GetOrgsOrgIdEnvTypesEnvTypeIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.environmentTypeResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EnvironmentTypeResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Add a new Environment Type
+     *
+     * @remarks
+     * Adds a new Environment Type to an Organization.
+     */
+    async postOrgsOrgIdEnvTypes(
+        req: operations.PostOrgsOrgIdEnvTypesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdEnvTypesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdEnvTypesRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/env-types", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "environmentTypeRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdEnvTypesResponse =
+            new operations.PostOrgsOrgIdEnvTypesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 201:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.environmentTypeResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EnvironmentTypeResponse
+                    );
+                }
+                break;
+            case [400, 401, 409].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

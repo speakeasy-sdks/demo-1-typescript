@@ -9,24 +9,24 @@ import { Expose } from "class-transformer";
  * HumanitecError represents a standard Humanitec Error
  */
 export class HumanitecErrorResponse extends SpeakeasyBase {
-  /**
-   * (Optional) Additional information is enclosed here.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "details" })
-  details?: Record<string, any>;
+    /**
+     * (Optional) Additional information is enclosed here.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "details" })
+    details?: Record<string, any>;
 
-  /**
-   * A short code to help with error identification.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "error" })
-  error: string;
+    /**
+     * A short code to help with error identification.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "error" })
+    error: string;
 
-  /**
-   * A Human readable message about the error.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "message" })
-  message: string;
+    /**
+     * A Human readable message about the error.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "message" })
+    message: string;
 }

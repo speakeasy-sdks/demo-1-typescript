@@ -9,17 +9,17 @@ import { Expose } from "class-transformer";
  * ClusterSecret represents Kubernetes secret reference.
  */
 export class ClusterSecretRequest extends SpeakeasyBase {
-  /**
-   * Namespace to look for the Kubernetes secret definition in.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "namespace" })
-  namespace: string;
+    /**
+     * Namespace to look for the Kubernetes secret definition in.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "namespace" })
+    namespace: string;
 
-  /**
-   * Name that identifies the Kubernetes secret.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "secret" })
-  secret: string;
+    /**
+     * Name that identifies the Kubernetes secret.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "secret" })
+    secret: string;
 }

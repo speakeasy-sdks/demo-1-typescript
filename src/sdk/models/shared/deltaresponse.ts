@@ -42,28 +42,28 @@ import { Expose, Type } from "class-transformer";
  * ```
  */
 export class DeltaResponse extends SpeakeasyBase {
-  /**
-   * A unique ID for the Delta
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * A unique ID for the Delta
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "metadata" })
-  @Type(() => DeltaMetadataResponse)
-  metadata: DeltaMetadataResponse;
+    @SpeakeasyMetadata()
+    @Expose({ name: "metadata" })
+    @Type(() => DeltaMetadataResponse)
+    metadata: DeltaMetadataResponse;
 
-  /**
-   * ModuleDeltas groups the different operations together.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "modules" })
-  @Type(() => ModuleDeltasResponse)
-  modules: ModuleDeltasResponse;
+    /**
+     * ModuleDeltas groups the different operations together.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "modules" })
+    @Type(() => ModuleDeltasResponse)
+    modules: ModuleDeltasResponse;
 
-  @SpeakeasyMetadata({ elemType: UpdateActionResponse })
-  @Expose({ name: "shared" })
-  @Type(() => UpdateActionResponse)
-  shared: UpdateActionResponse[];
+    @SpeakeasyMetadata({ elemType: UpdateActionResponse })
+    @Expose({ name: "shared" })
+    @Type(() => UpdateActionResponse)
+    shared: UpdateActionResponse[];
 }

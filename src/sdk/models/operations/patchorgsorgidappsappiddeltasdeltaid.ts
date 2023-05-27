@@ -7,113 +7,107 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PatchOrgsOrgIdAppsAppIdDeltasDeltaIdRequest extends SpeakeasyBase {
-  /**
-   * An array of Deltas.
-   *
-   * @remarks
-   *
-   * The Deltas in the request are combined, meaning the current Delta is updated in turn by each Delta in the request. Once all Deltas have been combined, the resulting Delta is simplified.
-   *
-   * * All Modules in the `modules.add` property are replaced with the new Delta's values. If the value of a Module is `null`, and the ID is in the `modules.remove` list, it is removed from the `modules.remove` list.
-   *
-   * * All IDs listed in `modules.remove` are combined. Any ID in `modules.remove` and also in `modules.add` are removed from `modules.add`
-   *
-   * * The lists of JSON Patches in `modules.update` are concatenated or created in `modules.updates`.
-   *
-   * Simplification involves:
-   *
-   * * Applying any entries in `modules.updates` that have matching IDs in `modules.add` to the `modules.add` entry and removing the `modules.update` entry.
-   *
-   * * Reducing the number of JSON Patches in each `modules.update` entry to the smallest set that has the same effect.
-   *
-   * **Extension to JSON Patch**
-   *
-   * If a JSON Patch entry needs to be removed, without side effects, the `value` of the `remove` action can be set to `{"scope": "delta"}. This will result in the remove action being used during simplification but be discarded before the Delta is finalized.
-   *
-   * If the user making the request is not the user who created the Delta and they are not already on the contributors list, they will be added to the contributors list.
-   *
-   * _NOTE: If the `id` or `metadata` properties are specified, they will be ignored._
-   */
-  @SpeakeasyMetadata({
-    data: "request, media_type=application/json",
-    elemType: shared.DeltaRequest,
-  })
-  requestBody: shared.DeltaRequest[];
+    /**
+     * An array of Deltas.
+     *
+     * @remarks
+     *
+     * The Deltas in the request are combined, meaning the current Delta is updated in turn by each Delta in the request. Once all Deltas have been combined, the resulting Delta is simplified.
+     *
+     * * All Modules in the `modules.add` property are replaced with the new Delta's values. If the value of a Module is `null`, and the ID is in the `modules.remove` list, it is removed from the `modules.remove` list.
+     *
+     * * All IDs listed in `modules.remove` are combined. Any ID in `modules.remove` and also in `modules.add` are removed from `modules.add`
+     *
+     * * The lists of JSON Patches in `modules.update` are concatenated or created in `modules.updates`.
+     *
+     * Simplification involves:
+     *
+     * * Applying any entries in `modules.updates` that have matching IDs in `modules.add` to the `modules.add` entry and removing the `modules.update` entry.
+     *
+     * * Reducing the number of JSON Patches in each `modules.update` entry to the smallest set that has the same effect.
+     *
+     * **Extension to JSON Patch**
+     *
+     * If a JSON Patch entry needs to be removed, without side effects, the `value` of the `remove` action can be set to `{"scope": "delta"}. This will result in the remove action being used during simplification but be discarded before the Delta is finalized.
+     *
+     * If the user making the request is not the user who created the Delta and they are not already on the contributors list, they will be added to the contributors list.
+     *
+     * _NOTE: If the `id` or `metadata` properties are specified, they will be ignored._
+     */
+    @SpeakeasyMetadata({
+        data: "request, media_type=application/json",
+        elemType: shared.DeltaRequest,
+    })
+    requestBody: shared.DeltaRequest[];
 
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * ID of the Delta to update.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=deltaId",
-  })
-  deltaId: string;
+    /**
+     * ID of the Delta to update.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=deltaId" })
+    deltaId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PatchOrgsOrgIdAppsAppIdDeltasDeltaIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * The requested Deployment Delta.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  deltaResponse?: shared.DeltaResponse;
+    /**
+     * The requested Deployment Delta.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    deltaResponse?: shared.DeltaResponse;
 
-  /**
-   * The request was invalid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * The request was invalid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * No Deployment Delta with ID `deltaId` found in Application.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  patchOrgsOrgIdAppsAppIdDeltasDeltaId404ApplicationJSONString?: string;
+    /**
+     * No Deployment Delta with ID `deltaId` found in Application.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    patchOrgsOrgIdAppsAppIdDeltasDeltaId404ApplicationJSONString?: string;
 }

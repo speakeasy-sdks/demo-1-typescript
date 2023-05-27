@@ -7,90 +7,84 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdRequest extends SpeakeasyBase {
-  /**
-   * The Matching Criteria ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=criteriaId",
-  })
-  criteriaId: string;
+    /**
+     * The Matching Criteria ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=criteriaId" })
+    criteriaId: string;
 
-  /**
-   * The Resource Definition ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=defId",
-  })
-  defId: string;
+    /**
+     * The Resource Definition ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=defId" })
+    defId: string;
 
-  /**
-   * If set to `true`, the Matching Criteria is deleted immediately, even if this action affects existing Active Resources.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=force" })
-  force?: boolean;
+    /**
+     * If set to `true`, the Matching Criteria is deleted immediately, even if this action affects existing Active Resources.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=force" })
+    force?: boolean;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Internal application error.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Internal application error.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * One or more Active Resources reference the Resource Definition through this Matching Criteria.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ elemType: shared.ResourceDefinitionChangeResponse })
-  resourceDefinitionChangeResponses?: shared.ResourceDefinitionChangeResponse[];
+    /**
+     * One or more Active Resources reference the Resource Definition through this Matching Criteria.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ elemType: shared.ResourceDefinitionChangeResponse })
+    resourceDefinitionChangeResponses?: shared.ResourceDefinitionChangeResponse[];
 
-  /**
-   * The Resource Definition is not found.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  deleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaId404ApplicationJSONString?: string;
+    /**
+     * The Resource Definition is not found.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    deleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaId404ApplicationJSONString?: string;
 }

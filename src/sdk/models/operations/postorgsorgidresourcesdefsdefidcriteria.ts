@@ -7,68 +7,64 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdResourcesDefsDefIdCriteriaRequest extends SpeakeasyBase {
-  /**
-   * Matching Criteria rules.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  matchingCriteriaRuleRequest: shared.MatchingCriteriaRuleRequest;
+    /**
+     * Matching Criteria rules.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    matchingCriteriaRuleRequest: shared.MatchingCriteriaRuleRequest;
 
-  /**
-   * The Resource Definition ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=defId",
-  })
-  defId: string;
+    /**
+     * The Resource Definition ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=defId" })
+    defId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PostOrgsOrgIdResourcesDefsDefIdCriteriaResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * One or more request parameters is missing or invalid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * One or more request parameters is missing or invalid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  /**
-   * The newly added Matching Criteria details.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  matchingCriteriaResponse?: shared.MatchingCriteriaResponse;
+    /**
+     * The newly added Matching Criteria details.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    matchingCriteriaResponse?: shared.MatchingCriteriaResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

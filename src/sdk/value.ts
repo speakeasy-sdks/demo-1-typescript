@@ -19,938 +19,904 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class Value {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Delete all Shared Value for an Environment
-   *
-   * @remarks
-   * All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
-   */
-  async deleteOrgsOrgIdAppsAppIdEnvsEnvIdValues(
-    req: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/values",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse =
-      new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Delete Shared Value for an Environment
-   *
-   * @remarks
-   * The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
-   */
-  async deleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKey(
-    req: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest(
-        req
-      );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse =
-      new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+    /**
+     * Delete all Shared Value for an Environment
+     *
+     * @remarks
+     * All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
+     */
+    async deleteOrgsOrgIdAppsAppIdEnvsEnvIdValues(
+        req: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/values",
+            req
+        );
 
-  /**
-   * Delete all Shared Value for an App
-   *
-   * @remarks
-   * All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
-   */
-  async deleteOrgsOrgIdAppsAppIdValues(
-    req: operations.DeleteOrgsOrgIdAppsAppIdValuesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdAppsAppIdValuesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdAppsAppIdValuesRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/values",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdAppsAppIdValuesResponse =
-      new operations.DeleteOrgsOrgIdAppsAppIdValuesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Delete Shared Value for an Application
-   *
-   * @remarks
-   * The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
-   */
-  async deleteOrgsOrgIdAppsAppIdValuesKey(
-    req: operations.DeleteOrgsOrgIdAppsAppIdValuesKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdAppsAppIdValuesKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdAppsAppIdValuesKeyRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/values/{key}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdAppsAppIdValuesKeyResponse =
-      new operations.DeleteOrgsOrgIdAppsAppIdValuesKeyResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * List Shared Values in an Environment
-   *
-   * @remarks
-   * The returned values will be the base Application values with the Environment overrides where applicable. The `source` field will specify the level from which the value is from.
-   */
-  async getOrgsOrgIdAppsAppIdEnvsEnvIdValues(
-    req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/values",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse =
-      new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.valueResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueResponse,
-            resFieldDepth
-          );
+        const res: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse =
+            new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * List Shared Values in an Application
-   *
-   * @remarks
-   * The returned values will be the "base" values for the Application. The overridden value for the Environment can be retrieved via the `/orgs/{orgId}/apps/{appId}/envs/{envId}/values` endpoint.
-   */
-  async getOrgsOrgIdAppsAppIdValues(
-    req: operations.GetOrgsOrgIdAppsAppIdValuesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdValuesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdValuesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/values",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdValuesResponse =
-      new operations.GetOrgsOrgIdAppsAppIdValuesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.valueResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueResponse,
-            resFieldDepth
-          );
+    /**
+     * Delete Shared Value for an Environment
+     *
+     * @remarks
+     * The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
+     */
+    async deleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKey(
+        req: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}",
+            req
+        );
 
-  /**
-   * Update Shared Value for an Environment
-   *
-   * @remarks
-   * Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-   */
-  async patchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKey(
-    req: operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest(
-        req
-      );
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valuePatchPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse =
-      new operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse =
+            new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Update Shared Value for an Application
-   *
-   * @remarks
-   * Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-   */
-  async patchOrgsOrgIdAppsAppIdValuesKey(
-    req: operations.PatchOrgsOrgIdAppsAppIdValuesKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdAppsAppIdValuesKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PatchOrgsOrgIdAppsAppIdValuesKeyRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/values/{key}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valuePatchPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PatchOrgsOrgIdAppsAppIdValuesKeyResponse =
-      new operations.PatchOrgsOrgIdAppsAppIdValuesKeyResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueResponse
-          );
+    /**
+     * Delete all Shared Value for an App
+     *
+     * @remarks
+     * All Shared Values will be deleted. If the Shared Values are marked as a secret, they will also be deleted.
+     */
+    async deleteOrgsOrgIdAppsAppIdValues(
+        req: operations.DeleteOrgsOrgIdAppsAppIdValuesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdAppsAppIdValuesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdAppsAppIdValuesRequest(req);
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/apps/{appId}/values", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Create a Shared Value for an Environment
-   *
-   * @remarks
-   * The Shared Value created will only be available to the specific Environment.
-   *
-   * If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
-   */
-  async postOrgsOrgIdAppsAppIdEnvsEnvIdValues(
-    req: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/values",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueCreatePayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse =
-      new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 201:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueResponse
-          );
+        const res: operations.DeleteOrgsOrgIdAppsAppIdValuesResponse =
+            new operations.DeleteOrgsOrgIdAppsAppIdValuesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
         }
-        break;
-      case [400, 409].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * Delete Shared Value for an Application
+     *
+     * @remarks
+     * The specified Shared Value will be permanently deleted. If the Shared Value is marked as a secret, it will also be permanently deleted.
+     */
+    async deleteOrgsOrgIdAppsAppIdValuesKey(
+        req: operations.DeleteOrgsOrgIdAppsAppIdValuesKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdAppsAppIdValuesKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdAppsAppIdValuesKeyRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/values/{key}",
+            req
+        );
 
-  /**
-   * Create a Shared Value for an Application
-   *
-   * @remarks
-   * The Shared Value created will be available to all Environments in that Application.
-   *
-   * If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
-   */
-  async postOrgsOrgIdAppsAppIdValues(
-    req: operations.PostOrgsOrgIdAppsAppIdValuesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdValuesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdAppsAppIdValuesRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/values",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueCreatePayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdValuesResponse =
-      new operations.PostOrgsOrgIdAppsAppIdValuesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 201:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 409].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.DeleteOrgsOrgIdAppsAppIdValuesKeyResponse =
+            new operations.DeleteOrgsOrgIdAppsAppIdValuesKeyResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Update Shared Value for an Environment
-   *
-   * @remarks
-   * Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-   */
-  async putOrgsOrgIdAppsAppIdEnvsEnvIdValuesKey(
-    req: operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueEditPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "put",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse =
-      new operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueResponse
-          );
+    /**
+     * List Shared Values in an Environment
+     *
+     * @remarks
+     * The returned values will be the base Application values with the Environment overrides where applicable. The `source` field will specify the level from which the value is from.
+     */
+    async getOrgsOrgIdAppsAppIdEnvsEnvIdValues(
+        req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest(req);
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/values",
+            req
+        );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Update Shared Value for an Application
-   *
-   * @remarks
-   * Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
-   */
-  async putOrgsOrgIdAppsAppIdValuesKey(
-    req: operations.PutOrgsOrgIdAppsAppIdValuesKeyRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PutOrgsOrgIdAppsAppIdValuesKeyResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PutOrgsOrgIdAppsAppIdValuesKeyRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/values/{key}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "valueEditPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "put",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PutOrgsOrgIdAppsAppIdValuesKeyResponse =
-      new operations.PutOrgsOrgIdAppsAppIdValuesKeyResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.valueResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ValueResponse
-          );
+        const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse =
+            new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.valueResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
-        }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * List Shared Values in an Application
+     *
+     * @remarks
+     * The returned values will be the "base" values for the Application. The overridden value for the Environment can be retrieved via the `/orgs/{orgId}/apps/{appId}/envs/{envId}/values` endpoint.
+     */
+    async getOrgsOrgIdAppsAppIdValues(
+        req: operations.GetOrgsOrgIdAppsAppIdValuesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdValuesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdValuesRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/apps/{appId}/values", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetOrgsOrgIdAppsAppIdValuesResponse =
+            new operations.GetOrgsOrgIdAppsAppIdValuesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.valueResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValueResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Update Shared Value for an Environment
+     *
+     * @remarks
+     * Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
+     */
+    async patchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKey(
+        req: operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valuePatchPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse =
+            new operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueResponse = utils.objectToClass(httpRes?.data, shared.ValueResponse);
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Update Shared Value for an Application
+     *
+     * @remarks
+     * Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
+     */
+    async patchOrgsOrgIdAppsAppIdValuesKey(
+        req: operations.PatchOrgsOrgIdAppsAppIdValuesKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdAppsAppIdValuesKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdAppsAppIdValuesKeyRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/values/{key}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valuePatchPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PatchOrgsOrgIdAppsAppIdValuesKeyResponse =
+            new operations.PatchOrgsOrgIdAppsAppIdValuesKeyResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueResponse = utils.objectToClass(httpRes?.data, shared.ValueResponse);
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Create a Shared Value for an Environment
+     *
+     * @remarks
+     * The Shared Value created will only be available to the specific Environment.
+     *
+     * If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
+     */
+    async postOrgsOrgIdAppsAppIdEnvsEnvIdValues(
+        req: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/values",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueCreatePayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse =
+            new operations.PostOrgsOrgIdAppsAppIdEnvsEnvIdValuesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 201:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueResponse = utils.objectToClass(httpRes?.data, shared.ValueResponse);
+                }
+                break;
+            case [400, 409].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Create a Shared Value for an Application
+     *
+     * @remarks
+     * The Shared Value created will be available to all Environments in that Application.
+     *
+     * If a Value is marked as a secret, it will be securely stored. It will not be possible to retrieve the value again through the API. The value of the secret can however be updated.
+     */
+    async postOrgsOrgIdAppsAppIdValues(
+        req: operations.PostOrgsOrgIdAppsAppIdValuesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdValuesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdAppsAppIdValuesRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/apps/{appId}/values", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueCreatePayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdAppsAppIdValuesResponse =
+            new operations.PostOrgsOrgIdAppsAppIdValuesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 201:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueResponse = utils.objectToClass(httpRes?.data, shared.ValueResponse);
+                }
+                break;
+            case [400, 409].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Update Shared Value for an Environment
+     *
+     * @remarks
+     * Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
+     */
+    async putOrgsOrgIdAppsAppIdEnvsEnvIdValuesKey(
+        req: operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/values/{key}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueEditPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "put",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse =
+            new operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueResponse = utils.objectToClass(httpRes?.data, shared.ValueResponse);
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Update Shared Value for an Application
+     *
+     * @remarks
+     * Update the value or description of the Shared Value. Shared Values marked as secret can also be updated.
+     */
+    async putOrgsOrgIdAppsAppIdValuesKey(
+        req: operations.PutOrgsOrgIdAppsAppIdValuesKeyRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PutOrgsOrgIdAppsAppIdValuesKeyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PutOrgsOrgIdAppsAppIdValuesKeyRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/values/{key}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "valueEditPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "put",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PutOrgsOrgIdAppsAppIdValuesKeyResponse =
+            new operations.PutOrgsOrgIdAppsAppIdValuesKeyResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.valueResponse = utils.objectToClass(httpRes?.data, shared.ValueResponse);
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

@@ -7,60 +7,54 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeRequest extends SpeakeasyBase {
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * The Environment ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=envId",
-  })
-  envId: string;
+    /**
+     * The Environment ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=envId" })
+    envId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Runtime info returned.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  runtimeInfoResponse?: shared.RuntimeInfoResponse;
+    /**
+     * Runtime info returned.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    runtimeInfoResponse?: shared.RuntimeInfoResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

@@ -7,46 +7,44 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdResourcesTypesRequest extends SpeakeasyBase {
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class GetOrgsOrgIdResourcesTypesResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Internal application error.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Internal application error.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  /**
-   * A possibly empty list of Resources Types.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ elemType: shared.ResourceTypeResponse })
-  resourceTypeResponses?: shared.ResourceTypeResponse[];
+    /**
+     * A possibly empty list of Resources Types.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ elemType: shared.ResourceTypeResponse })
+    resourceTypeResponses?: shared.ResourceTypeResponse[];
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

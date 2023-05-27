@@ -9,17 +9,17 @@ import { Expose } from "class-transformer";
  * ValuesSecrets stores data that should be passed around split by sensitivity.
  */
 export class ValuesSecretsResponse extends SpeakeasyBase {
-  /**
-   * Secrets section of the data set. Sensitive information is stored in the Vault and replaced with the Vault paths when sent outside.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "secrets" })
-  secrets?: Record<string, any>;
+    /**
+     * Secrets section of the data set. Sensitive information is stored in the Vault and replaced with the Vault paths when sent outside.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "secrets" })
+    secrets?: Record<string, any>;
 
-  /**
-   * Values section of the data set. Passed around as-is.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "values" })
-  values?: Record<string, any>;
+    /**
+     * Values section of the data set. Passed around as-is.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "values" })
+    values?: Record<string, any>;
 }

@@ -9,87 +9,87 @@ import { Expose } from "class-transformer";
  * An Artefact Version represents a particular version of an Artefact that can be added to an Application.
  */
 export class ArtefactVersionResponse extends SpeakeasyBase {
-  /**
-   * If the Artefact Version is archived.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "archived" })
-  archived: boolean;
+    /**
+     * If the Artefact Version is archived.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "archived" })
+    archived: boolean;
 
-  /**
-   * The UUID of the Artefact.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "artefact_id" })
-  artefactId: string;
+    /**
+     * The UUID of the Artefact.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "artefact_id" })
+    artefactId: string;
 
-  /**
-   * (Optional) The commit ID the Artefact Version was built on.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "commit" })
-  commit: string;
+    /**
+     * (Optional) The commit ID the Artefact Version was built on.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "commit" })
+    commit: string;
 
-  /**
-   * The time when the Artefact Version was added to Humanitec.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  createdAt?: string;
+    /**
+     * The time when the Artefact Version was added to Humanitec.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    createdAt?: string;
 
-  /**
-   * The user ID of the user who added the Artefact Version to Humanitec.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  createdBy?: string;
+    /**
+     * The user ID of the user who added the Artefact Version to Humanitec.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    createdBy?: string;
 
-  /**
-   * (Optional) The Artefact Version digest.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "digest" })
-  digest: string;
+    /**
+     * (Optional) The Artefact Version digest.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "digest" })
+    digest: string;
 
-  /**
-   * The UUID of the Artefact Version.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * The UUID of the Artefact Version.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  /**
-   * The name of the Artefact.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The name of the Artefact.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * (Optional) The ref the Artefact Version was built from.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "ref" })
-  ref: string;
+    /**
+     * (Optional) The ref the Artefact Version was built from.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "ref" })
+    ref: string;
 
-  /**
-   * The time when the Artefact Version was updated for the last time.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "updated_at" })
-  updatedAt?: string;
+    /**
+     * The time when the Artefact Version was updated for the last time.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "updated_at" })
+    updatedAt?: string;
 
-  /**
-   * The user ID of the user who performed the last updated on the Artefact Version.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "updated_by" })
-  updatedBy?: string;
+    /**
+     * The user ID of the user who performed the last updated on the Artefact Version.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "updated_by" })
+    updatedBy?: string;
 
-  /**
-   * (Optional) The version of the Artefact Version.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "version" })
-  version: string;
+    /**
+     * (Optional) The version of the Artefact Version.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "version" })
+    version: string;
 }

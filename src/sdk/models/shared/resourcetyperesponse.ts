@@ -13,38 +13,38 @@ import { Expose } from "class-transformer";
  * Each Resource Type also defines a set of input parameters (`inputs_schema`), and a set of output data (`outputs_schema`). When provisioning a resource, these are treated as inputs and outputs respectively.
  */
 export class ResourceTypeResponse extends SpeakeasyBase {
-  /**
-   * Category name (used to group similar resources on the UI).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "category" })
-  category: string;
+    /**
+     * Category name (used to group similar resources on the UI).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "category" })
+    category: string;
 
-  /**
-   * A JSON Schema specifying the type-specific parameters for the driver (input).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "inputs_schema" })
-  inputsSchema: Record<string, any>;
+    /**
+     * A JSON Schema specifying the type-specific parameters for the driver (input).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "inputs_schema" })
+    inputsSchema: Record<string, any>;
 
-  /**
-   * Display name.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Display name.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * A JSON Schema specifying the type-specific data passed to the deployment (output).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "outputs_schema" })
-  outputsSchema: Record<string, any>;
+    /**
+     * A JSON Schema specifying the type-specific data passed to the deployment (output).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "outputs_schema" })
+    outputsSchema: Record<string, any>;
 
-  /**
-   * Unique resource type identifier (system-wide, across all organizations).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * Unique resource type identifier (system-wide, across all organizations).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 }

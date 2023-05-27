@@ -13,11 +13,11 @@ import { Expose } from "class-transformer";
  *
  */
 export class ValuePatchPayloadRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "description" })
-  description?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "value" })
-  value?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "value" })
+    value?: string;
 }

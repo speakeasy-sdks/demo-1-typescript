@@ -7,90 +7,84 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyRequest extends SpeakeasyBase {
-  /**
-   * At least `value` or `description` must be supplied. All other fields will be ignored.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  valuePatchPayloadRequest: shared.ValuePatchPayloadRequest;
+    /**
+     * At least `value` or `description` must be supplied. All other fields will be ignored.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    valuePatchPayloadRequest: shared.ValuePatchPayloadRequest;
 
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * The Environment ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=envId",
-  })
-  envId: string;
+    /**
+     * The Environment ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=envId" })
+    envId: string;
 
-  /**
-   * The key to update.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=key" })
-  key: string;
+    /**
+     * The key to update.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=key" })
+    key: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PatchOrgsOrgIdAppsAppIdEnvsEnvIdValuesKeyResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Input not valid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Input not valid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Shared Value successfully updated.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  valueResponse?: shared.ValueResponse;
+    /**
+     * Shared Value successfully updated.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    valueResponse?: shared.ValueResponse;
 }

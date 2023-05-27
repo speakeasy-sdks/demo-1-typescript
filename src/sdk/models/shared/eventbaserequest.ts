@@ -9,17 +9,17 @@ import { Expose } from "class-transformer";
  * Properties which identify an event .
  */
 export class EventBaseRequest extends SpeakeasyBase {
-  /**
-   * Event scope
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "scope" })
-  scope?: string;
+    /**
+     * Event scope
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "scope" })
+    scope?: string;
 
-  /**
-   * Event type
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type?: string;
+    /**
+     * Event type
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type?: string;
 }

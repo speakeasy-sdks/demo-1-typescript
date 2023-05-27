@@ -7,61 +7,57 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PatchOrgsOrgIdResourcesAccountsAccIdRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  updateResourceAccountRequestRequest: shared.UpdateResourceAccountRequestRequest;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    updateResourceAccountRequestRequest: shared.UpdateResourceAccountRequestRequest;
 
-  /**
-   * The Resource Account ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=accId",
-  })
-  accId: string;
+    /**
+     * The Resource Account ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=accId" })
+    accId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PatchOrgsOrgIdResourcesAccountsAccIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * One or more request parameters is missing or invalid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * One or more request parameters is missing or invalid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  /**
-   * The updated Resource Account details.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  resourceAccountResponse?: shared.ResourceAccountResponse;
+    /**
+     * The updated Resource Account details.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    resourceAccountResponse?: shared.ResourceAccountResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

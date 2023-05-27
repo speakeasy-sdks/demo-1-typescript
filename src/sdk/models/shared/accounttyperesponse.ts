@@ -9,17 +9,17 @@ import { Expose } from "class-transformer";
  * Resource Account Types define cloud providers or protocols to which a resource account can belong.
  */
 export class AccountTypeResponse extends SpeakeasyBase {
-  /**
-   * Display Name.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * Display Name.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * Unique account type identifier (system-wide, across all organizations).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * Unique account type identifier (system-wide, across all organizations).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 }

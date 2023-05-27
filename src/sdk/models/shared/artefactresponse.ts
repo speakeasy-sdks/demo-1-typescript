@@ -9,52 +9,52 @@ import { Expose } from "class-transformer";
  * Artefacts can be registered with Humanitec. Continuous Integration (CI) pipelines notify Humanitec when a new version of an Artefact becomes available. Humanitec tracks the Artefact along with metadata about how it was built.
  */
 export class ArtefactResponse extends SpeakeasyBase {
-  /**
-   * The time when the Artefact was added to Humanitec.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  createdAt?: string;
+    /**
+     * The time when the Artefact was added to Humanitec.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    createdAt?: string;
 
-  /**
-   * The user ID of the user who added the Artefact to Humanitec.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  createdBy?: string;
+    /**
+     * The user ID of the user who added the Artefact to Humanitec.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    createdBy?: string;
 
-  /**
-   * The UUID of the Artefact.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * The UUID of the Artefact.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  /**
-   * The name of the Artefact.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The name of the Artefact.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * The type of the Artefact.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * The type of the Artefact.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 
-  /**
-   * The time when the Artefact was updated for the last time.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "updated_at" })
-  updatedAt?: string;
+    /**
+     * The time when the Artefact was updated for the last time.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "updated_at" })
+    updatedAt?: string;
 
-  /**
-   * The user ID of the user who updated the Artefact for the last time.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "updated_by" })
-  updatedBy?: string;
+    /**
+     * The user ID of the user who updated the Artefact for the last time.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "updated_by" })
+    updatedBy?: string;
 }

@@ -13,17 +13,17 @@ import { Expose } from "class-transformer";
  * Environment Types can be used with External Resources to manage where resources such as databases are provisioned or even which cluster to deploy to.
  */
 export class EnvironmentTypeRequest extends SpeakeasyBase {
-  /**
-   * A Human-readable description of the Environment Type
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "description" })
-  description?: string;
+    /**
+     * A Human-readable description of the Environment Type
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description?: string;
 
-  /**
-   * The ID of the Environment Type. (Must be unique within an Organization.)
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * The ID of the Environment Type. (Must be unique within an Organization.)
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 }

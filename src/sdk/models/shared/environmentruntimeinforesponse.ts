@@ -9,19 +9,19 @@ import { Expose } from "class-transformer";
  * EnvironmentRuntimeInfo
  */
 export class EnvironmentRuntimeInfoResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "error" })
-  error?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "error" })
+    error?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "paused" })
-  paused: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "paused" })
+    paused: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: string;
 }

@@ -9,59 +9,59 @@ import { Expose, Transform } from "class-transformer";
  * Each Workload Profile has one or more Versions associated with it. In order to add a version, a Workload Profile must first be created.
  */
 export class WorkloadProfileVersionResponse extends SpeakeasyBase {
-  /**
-   * Creation date
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  createdAt: Date;
+    /**
+     * Creation date
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt: Date;
 
-  /**
-   * User created the profile
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  createdBy: string;
+    /**
+     * User created the profile
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    createdBy: string;
 
-  /**
-   * A map of Features. If referencing built in Humanitec features, the fully qualified feature name must be used: e.g. `humanitec/annotations`.
-   *
-   * @remarks
-   *
-   * {
-   *
-   * }
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "features" })
-  features: Record<string, any>;
+    /**
+     * A map of Features. If referencing built in Humanitec features, the fully qualified feature name must be used: e.g. `humanitec/annotations`.
+     *
+     * @remarks
+     *
+     * {
+     *
+     * }
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "features" })
+    features: Record<string, any>;
 
-  /**
-   * Notes
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "notes" })
-  notes: string;
+    /**
+     * Notes
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "notes" })
+    notes: string;
 
-  /**
-   * Organization ID
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "org_id" })
-  orgId: string;
+    /**
+     * Organization ID
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "org_id" })
+    orgId: string;
 
-  /**
-   * Workload Profile ID
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "profile_id" })
-  profileId: string;
+    /**
+     * Workload Profile ID
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "profile_id" })
+    profileId: string;
 
-  /**
-   * Version
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "version" })
-  version: string;
+    /**
+     * Version
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "version" })
+    version: string;
 }

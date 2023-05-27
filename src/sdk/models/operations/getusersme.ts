@@ -6,22 +6,22 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class GetUsersMeResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * The extended user profile of the user.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  getUsersMe200ApplicationJSONObject?: Record<string, any>;
+    /**
+     * The extended user profile of the user.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    getUsersMe200ApplicationJSONObject?: Record<string, any>;
 }

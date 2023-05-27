@@ -7,83 +7,77 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  valueSetActionPayloadRequest: shared.ValueSetActionPayloadRequest;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    valueSetActionPayloadRequest: shared.ValueSetActionPayloadRequest;
 
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * Key of the value to be restored.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=key" })
-  key: string;
+    /**
+     * Key of the value to be restored.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=key" })
+    key: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * The ValueSetVersion ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=valueSetVersionId",
-  })
-  valueSetVersionId: string;
+    /**
+     * The ValueSetVersion ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=valueSetVersionId" })
+    valueSetVersionId: string;
 }
 
 export class PostOrgsOrgIdAppsAppIdValueSetVersionsValueSetVersionIdRestoreKeyResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Invalid request
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Invalid request
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * The resulting ValueSetVersion
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  valueSetVersionResponse?: shared.ValueSetVersionResponse;
+    /**
+     * The resulting ValueSetVersion
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    valueSetVersionResponse?: shared.ValueSetVersionResponse;
 }

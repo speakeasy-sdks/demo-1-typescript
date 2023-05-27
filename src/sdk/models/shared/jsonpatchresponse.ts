@@ -6,15 +6,15 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class JSONPatchResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "op" })
-  op: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "op" })
+    op: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "path" })
-  path: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "path" })
+    path: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "value" })
-  value?: any;
+    @SpeakeasyMetadata()
+    @Expose({ name: "value" })
+    value?: any;
 }

@@ -7,46 +7,44 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdRequest extends SpeakeasyBase {
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class GetOrgsOrgIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Invalid request parameters or payload. E.g. invalid `orgId` format.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  errorInfoResponse?: shared.ErrorInfoResponse;
+    /**
+     * Invalid request parameters or payload. E.g. invalid `orgId` format.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    errorInfoResponse?: shared.ErrorInfoResponse;
 
-  /**
-   * Returns organization details.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  organizationResponse?: shared.OrganizationResponse;
+    /**
+     * Returns organization details.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    organizationResponse?: shared.OrganizationResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

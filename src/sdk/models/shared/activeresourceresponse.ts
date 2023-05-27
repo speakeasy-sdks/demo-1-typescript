@@ -13,80 +13,80 @@ import { Expose } from "class-transformer";
  * Active Resources are provisioned based on a Resource Definition. The Resource Definition describes how to provision a concrete resource based on a Resource Type and metadata about the Environment (for example the Environment Type or the Application ID). The criteria for how to choose a Resource Definition is known as a Matching Criteria. If the Matching Criteria changes or the Resource Definition is deleted, the concrete resource represented by an Active Resource might be deleted and reprovisioned when a deployment occurs in the Environment.
  */
 export class ActiveResourceResponse extends SpeakeasyBase {
-  /**
-   * The ID of the App the resource is associated with.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "app_id" })
-  appId: string;
+    /**
+     * The ID of the App the resource is associated with.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "app_id" })
+    appId: string;
 
-  /**
-   * The Resource Definition that this resource was provisioned from.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "def_id" })
-  defId: string;
+    /**
+     * The Resource Definition that this resource was provisioned from.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "def_id" })
+    defId: string;
 
-  /**
-   * The deployment that the resource was last provisioned in.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "deploy_id" })
-  deployId: string;
+    /**
+     * The deployment that the resource was last provisioned in.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "deploy_id" })
+    deployId: string;
 
-  /**
-   * The ID of the Environment the resource is associated with.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "env_id" })
-  envId: string;
+    /**
+     * The ID of the Environment the resource is associated with.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "env_id" })
+    envId: string;
 
-  /**
-   * The Environment Type of the Environment specified by env_id.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "env_type" })
-  envType: string;
+    /**
+     * The Environment Type of the Environment specified by env_id.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "env_type" })
+    envType: string;
 
-  /**
-   * the ID of the Organization the Active Resource is associated with.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "org_id" })
-  orgId: string;
+    /**
+     * the ID of the Organization the Active Resource is associated with.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "org_id" })
+    orgId: string;
 
-  /**
-   * The ID of the resource
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "res_id" })
-  resId: string;
+    /**
+     * The ID of the resource
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "res_id" })
+    resId: string;
 
-  /**
-   * The data that the resource passes into the deployment ('values' only).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "resource" })
-  resource: Record<string, any>;
+    /**
+     * The data that the resource passes into the deployment ('values' only).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "resource" })
+    resource: Record<string, any>;
 
-  /**
-   * Current resource status: 'pending', 'active', or 'deleting'.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status: string;
+    /**
+     * Current resource status: 'pending', 'active', or 'deleting'.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status: string;
 
-  /**
-   * The Resource Type of the resource
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * The Resource Type of the resource
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 
-  /**
-   * The time the resource was last provisioned as part of a deployment.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "updated_at" })
-  updatedAt: string;
+    /**
+     * The time the resource was last provisioned as part of a deployment.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "updated_at" })
+    updatedAt: string;
 }

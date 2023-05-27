@@ -7,100 +7,94 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdResourcesDefsRequest extends SpeakeasyBase {
-  /**
-   * (Optional) Filter Resource Definitions that may match a specific Application.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=app" })
-  app?: string;
+    /**
+     * (Optional) Filter Resource Definitions that may match a specific Application.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=app" })
+    app?: string;
 
-  /**
-   * (Optional) Filter Resource Definitions that may match a specific Environment.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=env" })
-  env?: string;
+    /**
+     * (Optional) Filter Resource Definitions that may match a specific Environment.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=env" })
+    env?: string;
 
-  /**
-   * (Optional) Filter Resource Definitions that may match a specific Environment Type.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=env_type",
-  })
-  envType?: string;
+    /**
+     * (Optional) Filter Resource Definitions that may match a specific Environment Type.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=env_type" })
+    envType?: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * (Optional) Filter Resource Definitions that may match a specific Resource.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=res" })
-  res?: string;
+    /**
+     * (Optional) Filter Resource Definitions that may match a specific Resource.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=res" })
+    res?: string;
 
-  /**
-   * (Optional) Filter Resource Definitions that may match a specific Resource Type.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=res_type",
-  })
-  resType?: string;
+    /**
+     * (Optional) Filter Resource Definitions that may match a specific Resource Type.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=res_type" })
+    resType?: string;
 }
 
 export class GetOrgsOrgIdResourcesDefsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Internal application error.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Internal application error.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  /**
-   * A possibly empty list of Resources Definitions.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ elemType: shared.ResourceDefinitionResponse })
-  resourceDefinitionResponses?: shared.ResourceDefinitionResponse[];
+    /**
+     * A possibly empty list of Resources Definitions.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ elemType: shared.ResourceDefinitionResponse })
+    resourceDefinitionResponses?: shared.ResourceDefinitionResponse[];
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

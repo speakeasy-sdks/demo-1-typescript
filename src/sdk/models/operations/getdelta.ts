@@ -7,66 +7,60 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetDeltaRequest extends SpeakeasyBase {
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * ID of the Delta to fetch.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=deltaId",
-  })
-  deltaId: string;
+    /**
+     * ID of the Delta to fetch.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=deltaId" })
+    deltaId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class GetDeltaResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * The requested Deployment Delta.
-   */
-  @SpeakeasyMetadata()
-  deltaResponse?: shared.DeltaResponse;
+    /**
+     * The requested Deployment Delta.
+     */
+    @SpeakeasyMetadata()
+    deltaResponse?: shared.DeltaResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * No Deployment Delta with ID `deltaId` found in Application.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  getDelta404ApplicationJSONString?: string;
+    /**
+     * No Deployment Delta with ID `deltaId` found in Application.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    getDelta404ApplicationJSONString?: string;
 }

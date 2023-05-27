@@ -7,56 +7,54 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdUsersRequest extends SpeakeasyBase {
-  /**
-   * The user ID and the role
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  newServiceUserRequest: shared.NewServiceUserRequest;
+    /**
+     * The user ID and the role
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    newServiceUserRequest: shared.NewServiceUserRequest;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PostOrgsOrgIdUsersResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * The request was invalid or the payload malformed.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * The request was invalid or the payload malformed.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * The extended user profile of the user.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  userProfileExtendedResponse?: shared.UserProfileExtendedResponse;
+    /**
+     * The extended user profile of the user.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    userProfileExtendedResponse?: shared.UserProfileExtendedResponse;
 }

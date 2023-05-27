@@ -9,45 +9,45 @@ import { Expose } from "class-transformer";
  * AddArtefactVersionPayload describes the payload for a new ArtefactVersion request.
  */
 export class AddArtefactVersionPayloadRequest extends SpeakeasyBase {
-  /**
-   * (Optional) The commit ID the Artefact Version was built on.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "commit" })
-  commit?: string;
+    /**
+     * (Optional) The commit ID the Artefact Version was built on.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "commit" })
+    commit?: string;
 
-  /**
-   * (Optional) The Artefact Version digest.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "digest" })
-  digest?: string;
+    /**
+     * (Optional) The Artefact Version digest.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "digest" })
+    digest?: string;
 
-  /**
-   * The Artefact name.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The Artefact name.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 
-  /**
-   * (Optional) The ref the Artefact Version was built from.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "ref" })
-  ref?: string;
+    /**
+     * (Optional) The ref the Artefact Version was built from.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "ref" })
+    ref?: string;
 
-  /**
-   * The Artefact Version type.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * The Artefact Version type.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 
-  /**
-   * (Optional) The Artefact Version.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "version" })
-  version?: string;
+    /**
+     * (Optional) The Artefact Version.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "version" })
+    version?: string;
 }

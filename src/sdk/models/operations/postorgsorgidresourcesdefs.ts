@@ -7,56 +7,54 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdResourcesDefsRequest extends SpeakeasyBase {
-  /**
-   * The Resource Definition details.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  createResourceDefinitionRequestRequest: shared.CreateResourceDefinitionRequestRequest;
+    /**
+     * The Resource Definition details.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    createResourceDefinitionRequestRequest: shared.CreateResourceDefinitionRequestRequest;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PostOrgsOrgIdResourcesDefsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * One or more request parameters is missing or invalid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * One or more request parameters is missing or invalid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  /**
-   * The newly created Resources Definition details.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  resourceDefinitionResponse?: shared.ResourceDefinitionResponse;
+    /**
+     * The newly created Resources Definition details.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    resourceDefinitionResponse?: shared.ResourceDefinitionResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

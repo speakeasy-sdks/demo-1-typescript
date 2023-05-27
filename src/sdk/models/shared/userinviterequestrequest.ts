@@ -9,17 +9,17 @@ import { Expose } from "class-transformer";
  * UserInviteRequest describes a new user invitation.
  */
 export class UserInviteRequestRequest extends SpeakeasyBase {
-  /**
-   * The email address of the user from the profile.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "email" })
-  email: string;
+    /**
+     * The email address of the user from the profile.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "email" })
+    email: string;
 
-  /**
-   * The role that this user would hold.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "role" })
-  role: string;
+    /**
+     * The role that this user would hold.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "role" })
+    role: string;
 }

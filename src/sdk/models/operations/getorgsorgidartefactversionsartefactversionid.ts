@@ -7,58 +7,54 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdArtefactVersionsArtefactVersionIdRequest extends SpeakeasyBase {
-  /**
-   * The Artefact Version ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=artefactVersionId",
-  })
-  artefactVersionId: string;
+    /**
+     * The Artefact Version ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=artefactVersionId" })
+    artefactVersionId: string;
 
-  /**
-   * The organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class GetOrgsOrgIdArtefactVersionsArtefactVersionIdResponse extends SpeakeasyBase {
-  /**
-   * An Artefact Version.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  artefactVersionResponse?: shared.ArtefactVersionResponse;
+    /**
+     * An Artefact Version.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    artefactVersionResponse?: shared.ArtefactVersionResponse;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Malformed Artefact Version ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Malformed Artefact Version ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

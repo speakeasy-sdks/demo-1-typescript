@@ -7,70 +7,66 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdAppsAppIdDeltasRequest extends SpeakeasyBase {
-  /**
-   * A Deployment Delta to create.
-   *
-   * @remarks
-   *
-   * The Deployment Delta will be added with the provided content of `modules` and the 'env_id' and 'name' properties of the 'metadata' property.
-   *
-   * NOTE: If the `id` property is specified, it will be ignored. A new ID will be generated and returned in the response.
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  deltaRequest: shared.DeltaRequest;
+    /**
+     * A Deployment Delta to create.
+     *
+     * @remarks
+     *
+     * The Deployment Delta will be added with the provided content of `modules` and the 'env_id' and 'name' properties of the 'metadata' property.
+     *
+     * NOTE: If the `id` property is specified, it will be ignored. A new ID will be generated and returned in the response.
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    deltaRequest: shared.DeltaRequest;
 
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PostOrgsOrgIdAppsAppIdDeltasResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * The request was invalid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * The request was invalid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * The requested Deployment Delta.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  postOrgsOrgIdAppsAppIdDeltas200ApplicationJSONOneOf?: any;
+    /**
+     * The requested Deployment Delta.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    postOrgsOrgIdAppsAppIdDeltas200ApplicationJSONOneOf?: any;
 }

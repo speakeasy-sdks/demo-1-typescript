@@ -13,31 +13,31 @@ import { Expose } from "class-transformer";
  * Holds the metadata associated withe a Container Image Build
  */
 export class ImageBuildRequest extends SpeakeasyBase {
-  /**
-   * The branch name of the branch the build was built on
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "branch" })
-  branch?: string;
+    /**
+     * The branch name of the branch the build was built on
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "branch" })
+    branch?: string;
 
-  /**
-   * The commit ID that this build was built from.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "commit" })
-  commit?: string;
+    /**
+     * The commit ID that this build was built from.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "commit" })
+    commit?: string;
 
-  /**
-   * The fully qualified Image URL including registry, repository and tag.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "image" })
-  image?: string;
+    /**
+     * The fully qualified Image URL including registry, repository and tag.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "image" })
+    image?: string;
 
-  /**
-   * The tag that the build was built from.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "tags" })
-  tags?: string[];
+    /**
+     * The tag that the build was built from.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "tags" })
+    tags?: string[];
 }

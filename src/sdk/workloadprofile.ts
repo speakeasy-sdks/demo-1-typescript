@@ -17,558 +17,535 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class WorkloadProfile {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+    }
 
-  /**
-   * Delete a Workload Profile Version
-   */
-  async deleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersion(
-    req: operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionRequest(
-          req
+    /**
+     * Delete a Workload Profile Version
+     */
+    async deleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersion(
+        req: operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionRequest(
+                req
+            );
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/workload-profiles/{profileId}/versions/{version}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/workload-profiles/{profileId}/versions/{version}",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    const client: AxiosInstance = this._defaultClient;
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionResponse =
-      new operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-      );
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionResponse =
+            new operations.DeleteOrgsOrgIdWorkloadProfilesProfileIdVersionsVersionResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Delete a Workload Profile
-   *
-   * @remarks
-   * This will also delete all versions of a workload profile.
-   *
-   * It is not possible to delete profiles of other organizations.
-   */
-  async deleteOrgsOrgIdWorkloadProfilesProfileQid(
-    req: operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidRequest(
-        req
-      );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/workload-profiles/{profileQid}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidResponse =
-      new operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+    /**
+     * Delete a Workload Profile
+     *
+     * @remarks
+     * This will also delete all versions of a workload profile.
+     *
+     * It is not possible to delete profiles of other organizations.
+     */
+    async deleteOrgsOrgIdWorkloadProfilesProfileQid(
+        req: operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * List workload profiles available to the organization.
-   */
-  async getOrgsOrgIdWorkloadProfiles(
-    req: operations.GetOrgsOrgIdWorkloadProfilesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdWorkloadProfilesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdWorkloadProfilesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/workload-profiles",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdWorkloadProfilesResponse =
-      new operations.GetOrgsOrgIdWorkloadProfilesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.workloadProfileResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.workloadProfileResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.WorkloadProfileResponse,
-            resFieldDepth
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Get a Workload Profile
-   */
-  async getOrgsOrgIdWorkloadProfilesProfileQid(
-    req: operations.GetOrgsOrgIdWorkloadProfilesProfileQidRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdWorkloadProfilesProfileQidResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdWorkloadProfilesProfileQidRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/workload-profiles/{profileQid}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdWorkloadProfilesProfileQidResponse =
-      new operations.GetOrgsOrgIdWorkloadProfilesProfileQidResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.workloadProfileResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.WorkloadProfileResponse
-          );
-        }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * List versions of the given workload profile with optional constraint.
-   */
-  async getOrgsOrgIdWorkloadProfilesProfileQidVersions(
-    req: operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/workload-profiles/{profileQid}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/workload-profiles/{profileQid}/versions",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    const client: AxiosInstance = this._defaultClient;
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse =
-      new operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.workloadProfileVersionResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.workloadProfileVersionResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.WorkloadProfileVersionResponse,
-            resFieldDepth
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidResponse =
+            new operations.DeleteOrgsOrgIdWorkloadProfilesProfileQidResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Create new Workload Profile
-   */
-  async postOrgsOrgIdWorkloadProfiles(
-    req: operations.PostOrgsOrgIdWorkloadProfilesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdWorkloadProfilesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdWorkloadProfilesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/workload-profiles",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "workloadProfileRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdWorkloadProfilesResponse =
-      new operations.PostOrgsOrgIdWorkloadProfilesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.workloadProfileResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.WorkloadProfileResponse
-          );
+    /**
+     * List workload profiles available to the organization.
+     */
+    async getOrgsOrgIdWorkloadProfiles(
+        req: operations.GetOrgsOrgIdWorkloadProfilesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdWorkloadProfilesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdWorkloadProfilesRequest(req);
         }
-        break;
-      case [400, 409].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/workload-profiles", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.GetOrgsOrgIdWorkloadProfilesResponse =
+            new operations.GetOrgsOrgIdWorkloadProfilesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.workloadProfileResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.workloadProfileResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.WorkloadProfileResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Get a Workload Profile
+     */
+    async getOrgsOrgIdWorkloadProfilesProfileQid(
+        req: operations.GetOrgsOrgIdWorkloadProfilesProfileQidRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdWorkloadProfilesProfileQidResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdWorkloadProfilesProfileQidRequest(req);
+        }
 
-  /**
-   * Add new Version of the Workload Profile
-   *
-   * @remarks
-   * Creates a Workload Profile Version from the uploaded Helm chart. The version is retrieved from the chart's metadata (Charts.yaml file).
-   *
-   * The request has content type `multipart/form-data` and the request body includes two parts:
-   *
-   * 1. `file` with `application/x-gzip` content type which is an archive containing a Helm chart.
-   *
-   * 2. `metadata` with `application/json` content type which defines the version's metadata.
-   *
-   * Request body example:
-   *
-   * 	Content-Type: multipart/form-data; boundary=----boundary 	----boundary 	Content-Disposition: form-data; name="metadata" 	Content-Type: application/json; charset=UTF-8 	{ 	  "features": { 	     "humanitec/service": {}, 	     "humanitec/volumes": {}, 	     "custom": {"schema": {}} 	  }, 	  "notes": "Notes related to this version of the profile" 	} 	----boundary 	Content-Disposition: form-data; name="file"; filename="my-workload-1.0.1.tgz" 	Content-Type: application/x-gzip 	[TGZ_DATA] 	----boundary
-   *
-   * **NOTE:**
-   *
-   * A Workload Profile must be created before a version can be added to it.
-   */
-  async postOrgsOrgIdWorkloadProfilesProfileQidVersions(
-    req: operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/workload-profiles/{profileQid}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/workload-profiles/{profileQid}/versions",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "multipart"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const client: AxiosInstance = this._defaultClient;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse =
-      new operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.workloadProfileVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.WorkloadProfileVersionResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 404, 409].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.GetOrgsOrgIdWorkloadProfilesProfileQidResponse =
+            new operations.GetOrgsOrgIdWorkloadProfilesProfileQidResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.workloadProfileResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.WorkloadProfileResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * List versions of the given workload profile with optional constraint.
+     */
+    async getOrgsOrgIdWorkloadProfilesProfileQidVersions(
+        req: operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/workload-profiles/{profileQid}/versions",
+            req
+        );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse =
+            new operations.GetOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.workloadProfileVersionResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.workloadProfileVersionResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.WorkloadProfileVersionResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Create new Workload Profile
+     */
+    async postOrgsOrgIdWorkloadProfiles(
+        req: operations.PostOrgsOrgIdWorkloadProfilesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdWorkloadProfilesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdWorkloadProfilesRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/workload-profiles", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "workloadProfileRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdWorkloadProfilesResponse =
+            new operations.PostOrgsOrgIdWorkloadProfilesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.workloadProfileResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.WorkloadProfileResponse
+                    );
+                }
+                break;
+            case [400, 409].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Add new Version of the Workload Profile
+     *
+     * @remarks
+     * Creates a Workload Profile Version from the uploaded Helm chart. The version is retrieved from the chart's metadata (Charts.yaml file).
+     *
+     * The request has content type `multipart/form-data` and the request body includes two parts:
+     *
+     * 1. `file` with `application/x-gzip` content type which is an archive containing a Helm chart.
+     *
+     * 2. `metadata` with `application/json` content type which defines the version's metadata.
+     *
+     * Request body example:
+     *
+     * 	Content-Type: multipart/form-data; boundary=----boundary 	----boundary 	Content-Disposition: form-data; name="metadata" 	Content-Type: application/json; charset=UTF-8 	{ 	  "features": { 	     "humanitec/service": {}, 	     "humanitec/volumes": {}, 	     "custom": {"schema": {}} 	  }, 	  "notes": "Notes related to this version of the profile" 	} 	----boundary 	Content-Disposition: form-data; name="file"; filename="my-workload-1.0.1.tgz" 	Content-Type: application/x-gzip 	[TGZ_DATA] 	----boundary
+     *
+     * **NOTE:**
+     *
+     * A Workload Profile must be created before a version can be added to it.
+     */
+    async postOrgsOrgIdWorkloadProfilesProfileQidVersions(
+        req: operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/workload-profiles/{profileQid}/versions",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "multipart");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse =
+            new operations.PostOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.workloadProfileVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.WorkloadProfileVersionResponse
+                    );
+                }
+                break;
+            case [400, 404, 409].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

@@ -6,6 +6,6 @@
  * Source of the value, "app" for app level, "env" for app env level.
  */
 export enum ValueSource {
-  App = "app",
-  Env = "env",
+    App = "app",
+    Env = "env",
 }

@@ -10,25 +10,25 @@ import { Expose, Type } from "class-transformer";
  * UpdateResourceDefinitionRequest describes a ResourceDefinition change request.
  */
 export class UpdateResourceDefinitionRequestRequest extends SpeakeasyBase {
-  /**
-   * (Optional) Security account required by the driver.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "driver_account" })
-  driverAccount?: string;
+    /**
+     * (Optional) Security account required by the driver.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "driver_account" })
+    driverAccount?: string;
 
-  /**
-   * ValuesSecrets stores data that should be passed around split by sensitivity.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "driver_inputs" })
-  @Type(() => ValuesSecretsRequest)
-  driverInputs?: ValuesSecretsRequest;
+    /**
+     * ValuesSecrets stores data that should be passed around split by sensitivity.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "driver_inputs" })
+    @Type(() => ValuesSecretsRequest)
+    driverInputs?: ValuesSecretsRequest;
 
-  /**
-   * The display name.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The display name.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 }

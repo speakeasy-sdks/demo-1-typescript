@@ -13,24 +13,24 @@ import { Expose } from "class-transformer";
  * Deployments are made by applying _Deltas_ to a state defined by an existing Deployment. The Environment’s from_deploy property defines the Deployment. This Deployment is usually but not always in the current Environment. If the Deployment is from another Environment, the state of that Environment will be "cloned" into the current Environment with the option to apply a Delta.
  */
 export class DeploymentRequest extends SpeakeasyBase {
-  /**
-   * An optional comment to help communicate the purpose of the Deployment.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "comment" })
-  comment?: string;
+    /**
+     * An optional comment to help communicate the purpose of the Deployment.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "comment" })
+    comment?: string;
 
-  /**
-   * ID of the Deployment Delta describing the changes to the current Environment for this Deployment.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "delta_id" })
-  deltaId?: string;
+    /**
+     * ID of the Deployment Delta describing the changes to the current Environment for this Deployment.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "delta_id" })
+    deltaId?: string;
 
-  /**
-   * ID of the Value Set Version describe the values to be used for this Deployment.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "value_set_version_id" })
-  valueSetVersionId?: string;
+    /**
+     * ID of the Value Set Version describe the values to be used for this Deployment.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "value_set_version_id" })
+    valueSetVersionId?: string;
 }

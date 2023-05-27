@@ -14,22 +14,22 @@ import { Expose, Type } from "class-transformer";
  *
  */
 export class ApplicationCreationRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "env" })
-  @Type(() => EnvironmentBaseRequest)
-  env?: EnvironmentBaseRequest;
+    @SpeakeasyMetadata()
+    @Expose({ name: "env" })
+    @Type(() => EnvironmentBaseRequest)
+    env?: EnvironmentBaseRequest;
 
-  /**
-   * The ID which refers to a specific application.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * The ID which refers to a specific application.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  /**
-   * The Human-friendly name for the Application.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The Human-friendly name for the Application.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 }

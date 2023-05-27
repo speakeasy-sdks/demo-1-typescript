@@ -7,58 +7,54 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdRegistriesRegIdCredsRequest extends SpeakeasyBase {
-  /**
-   * Unique (alpha-numerical) organization identifier.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * Unique (alpha-numerical) organization identifier.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * Unique (alpha-numerical) registry identifier.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=regId",
-  })
-  regId: string;
+    /**
+     * Unique (alpha-numerical) registry identifier.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=regId" })
+    regId: string;
 }
 
 export class GetOrgsOrgIdRegistriesRegIdCredsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Request parameters are incomplete or invalid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  errorInfoResponse?: shared.ErrorInfoResponse;
+    /**
+     * Request parameters are incomplete or invalid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    errorInfoResponse?: shared.ErrorInfoResponse;
 
-  /**
-   * Current account credentials or secret details for the registry.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  registryCredsResponse?: shared.RegistryCredsResponse;
+    /**
+     * Current account credentials or secret details for the registry.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    registryCredsResponse?: shared.RegistryCredsResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

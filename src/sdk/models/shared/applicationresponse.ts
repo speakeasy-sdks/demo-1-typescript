@@ -14,39 +14,39 @@ import { Expose, Type } from "class-transformer";
  * Apps are the root of the configuration tree holding Environments, Deployments, Shared Values, and Secrets.
  */
 export class ApplicationResponse extends SpeakeasyBase {
-  /**
-   * The timestamp in UTC indicates when the Application was created.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  createdAt: string;
+    /**
+     * The timestamp in UTC indicates when the Application was created.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    createdAt: string;
 
-  /**
-   * The user who created the Application.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  createdBy: string;
+    /**
+     * The user who created the Application.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    createdBy: string;
 
-  /**
-   * The Environments associated with the Application.
-   */
-  @SpeakeasyMetadata({ elemType: EnvironmentBaseResponse })
-  @Expose({ name: "envs" })
-  @Type(() => EnvironmentBaseResponse)
-  envs: EnvironmentBaseResponse[];
+    /**
+     * The Environments associated with the Application.
+     */
+    @SpeakeasyMetadata({ elemType: EnvironmentBaseResponse })
+    @Expose({ name: "envs" })
+    @Type(() => EnvironmentBaseResponse)
+    envs: EnvironmentBaseResponse[];
 
-  /**
-   * The ID which refers to a specific application.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * The ID which refers to a specific application.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  /**
-   * The Human-friendly name for the Application.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name: string;
+    /**
+     * The Human-friendly name for the Application.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name: string;
 }

@@ -9,52 +9,52 @@ import { Expose } from "class-transformer";
  * CreateDriverRequest describes the new resource driver registration request.
  */
 export class CreateDriverRequestRequest extends SpeakeasyBase {
-  /**
-   * List of resources accounts types supported by the driver
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "account_types" })
-  accountTypes: string[];
+    /**
+     * List of resources accounts types supported by the driver
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "account_types" })
+    accountTypes: string[];
 
-  /**
-   * The ID for this driver. Is used as `driver_type`.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    /**
+     * The ID for this driver. Is used as `driver_type`.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  /**
-   * A JSON Schema specifying the driver-specific input parameters.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "inputs_schema" })
-  inputsSchema: Record<string, any>;
+    /**
+     * A JSON Schema specifying the driver-specific input parameters.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "inputs_schema" })
+    inputsSchema: Record<string, any>;
 
-  /**
-   * Defines whether this driver is accessible to all Organizations.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "is_public" })
-  isPublic?: boolean;
+    /**
+     * Defines whether this driver is accessible to all Organizations.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "is_public" })
+    isPublic?: boolean;
 
-  /**
-   * The prefix where the driver resides or, if the driver is a virtual driver, the reference to an existing driver using the `driver://` schema of the format `driver://{orgId}/{driverId}`. Only members of the organization the driver belongs to can see 'target'.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "target" })
-  target: string;
+    /**
+     * The prefix where the driver resides or, if the driver is a virtual driver, the reference to an existing driver using the `driver://` schema of the format `driver://{orgId}/{driverId}`. Only members of the organization the driver belongs to can see 'target'.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "target" })
+    target: string;
 
-  /**
-   * If the driver is a virtual driver, template defines a Go template that converts the driver inputs supplied in the resource definition into the driver inputs for the target driver.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "template" })
-  template?: any;
+    /**
+     * If the driver is a virtual driver, template defines a Go template that converts the driver inputs supplied in the resource definition into the driver inputs for the target driver.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "template" })
+    template?: any;
 
-  /**
-   * The type of resource produced by this driver
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * The type of resource produced by this driver
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 }

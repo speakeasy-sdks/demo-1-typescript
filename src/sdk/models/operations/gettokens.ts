@@ -6,22 +6,22 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class GetTokensResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * The token structure.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  getTokens200ApplicationJSONObject?: Record<string, any>;
+    /**
+     * The token structure.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    getTokens200ApplicationJSONObject?: Record<string, any>;
 }

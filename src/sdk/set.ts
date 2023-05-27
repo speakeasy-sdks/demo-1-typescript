@@ -45,316 +45,307 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class Set {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Get all Deployment Sets
-   */
-  async getSets(
-    req: operations.GetSetsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetSetsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetSetsRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/sets",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetSetsResponse = new operations.GetSetsResponse({
-      statusCode: httpRes.status,
-      contentType: contentType,
-      rawResponse: httpRes,
-    });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.setResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.setResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.SetResponse,
-            resFieldDepth
-          );
+    /**
+     * Get all Deployment Sets
+     */
+    async getSets(
+        req: operations.GetSetsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetSetsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetSetsRequest(req);
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getSets404ApplicationJSONString = JSON.stringify(httpRes?.data);
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/apps/{appId}/sets", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Get a Deployment Set
-   */
-  async getOrgsOrgIdAppsAppIdSetsSetId(
-    req: operations.GetOrgsOrgIdAppsAppIdSetsSetIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdSetsSetIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdSetsSetIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/sets/{setId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdSetsSetIdResponse =
-      new operations.GetOrgsOrgIdAppsAppIdSetsSetIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getOrgsOrgIdAppsAppIdSetsSetId200ApplicationJSONOneOf =
-            httpRes?.data;
+        const res: operations.GetSetsResponse = new operations.GetSetsResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.setResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.setResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.SetResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getSets404ApplicationJSONString = JSON.stringify(httpRes?.data);
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getOrgsOrgIdAppsAppIdSetsSetId404ApplicationJSONString =
-            JSON.stringify(httpRes?.data);
+
+        return res;
+    }
+
+    /**
+     * Get a Deployment Set
+     */
+    async getOrgsOrgIdAppsAppIdSetsSetId(
+        req: operations.GetOrgsOrgIdAppsAppIdSetsSetIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdSetsSetIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdSetsSetIdRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/sets/{setId}",
+            req
+        );
 
-  /**
-   * Get the difference between 2 Deployment Sets
-   */
-  async getOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetId(
-    req: operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdRequest(
-        req
-      );
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/sets/{setId}/diff/{sourceSetId}",
-      req
-    );
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdResponse =
-      new operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.plainDeltaResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.PlainDeltaResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetId404ApplicationJSONString =
-            JSON.stringify(httpRes?.data);
+
+        const res: operations.GetOrgsOrgIdAppsAppIdSetsSetIdResponse =
+            new operations.GetOrgsOrgIdAppsAppIdSetsSetIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getOrgsOrgIdAppsAppIdSetsSetId200ApplicationJSONOneOf = httpRes?.data;
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getOrgsOrgIdAppsAppIdSetsSetId404ApplicationJSONString = JSON.stringify(
+                        httpRes?.data
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Apply a Deployment Delta to a Deployment Set
-   */
-  async postOrgsOrgIdAppsAppIdSetsSetId(
-    req: operations.PostOrgsOrgIdAppsAppIdSetsSetIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdAppsAppIdSetsSetIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdAppsAppIdSetsSetIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/sets/{setId}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "deltaRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] =
-      "application/json;q=1, application/json;q=0.7, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdAppsAppIdSetsSetIdResponse =
-      new operations.PostOrgsOrgIdAppsAppIdSetsSetIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.postOrgsOrgIdAppsAppIdSetsSetId200ApplicationJSONString =
-            JSON.stringify(httpRes?.data);
+    /**
+     * Get the difference between 2 Deployment Sets
+     */
+    async getOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetId(
+        req: operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdRequest(req);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/sets/{setId}/diff/{sourceSetId}",
+            req
+        );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.postOrgsOrgIdAppsAppIdSetsSetId404ApplicationJSONString =
-            JSON.stringify(httpRes?.data);
+
+        const res: operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdResponse =
+            new operations.GetOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.plainDeltaResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.PlainDeltaResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getOrgsOrgIdAppsAppIdSetsSetIdDiffSourceSetId404ApplicationJSONString =
+                        JSON.stringify(httpRes?.data);
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Apply a Deployment Delta to a Deployment Set
+     */
+    async postOrgsOrgIdAppsAppIdSetsSetId(
+        req: operations.PostOrgsOrgIdAppsAppIdSetsSetIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdAppsAppIdSetsSetIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdAppsAppIdSetsSetIdRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/sets/{setId}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "deltaRequest", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdAppsAppIdSetsSetIdResponse =
+            new operations.PostOrgsOrgIdAppsAppIdSetsSetIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.postOrgsOrgIdAppsAppIdSetsSetId200ApplicationJSONString = JSON.stringify(
+                        httpRes?.data
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.postOrgsOrgIdAppsAppIdSetsSetId404ApplicationJSONString = JSON.stringify(
+                        httpRes?.data
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

@@ -35,16 +35,16 @@ import { Expose, Type } from "class-transformer";
  * ```
  */
 export class PlainDeltaResponse extends SpeakeasyBase {
-  /**
-   * ModuleDeltas groups the different operations together.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "modules" })
-  @Type(() => ModuleDeltasResponse)
-  modules: ModuleDeltasResponse;
+    /**
+     * ModuleDeltas groups the different operations together.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "modules" })
+    @Type(() => ModuleDeltasResponse)
+    modules: ModuleDeltasResponse;
 
-  @SpeakeasyMetadata({ elemType: UpdateActionResponse })
-  @Expose({ name: "shared" })
-  @Type(() => UpdateActionResponse)
-  shared: UpdateActionResponse[];
+    @SpeakeasyMetadata({ elemType: UpdateActionResponse })
+    @Expose({ name: "shared" })
+    @Type(() => UpdateActionResponse)
+    shared: UpdateActionResponse[];
 }

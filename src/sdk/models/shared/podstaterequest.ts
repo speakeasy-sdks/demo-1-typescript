@@ -9,23 +9,23 @@ import { Expose } from "class-transformer";
  * PodState represents single pod status
  */
 export class PodStateRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "containerStatuses" })
-  containerStatuses?: Record<string, any>[];
+    @SpeakeasyMetadata()
+    @Expose({ name: "containerStatuses" })
+    containerStatuses?: Record<string, any>[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "phase" })
-  phase?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "phase" })
+    phase?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "podName" })
-  podName?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "podName" })
+    podName?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "revision" })
-  revision?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "revision" })
+    revision?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: string;
 }

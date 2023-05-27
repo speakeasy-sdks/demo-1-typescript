@@ -9,10 +9,10 @@ import { Expose } from "class-transformer";
  * ErrorInfo is returned by a handler in case of an error.
  */
 export class ErrorInfoResponse extends SpeakeasyBase {
-  /**
-   * An error details
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "error" })
-  error: string;
+    /**
+     * An error details
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "error" })
+    error: string;
 }

@@ -15,313 +15,296 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class RuntimeInfo {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Get Runtime information about the environment.
-   */
-  async getOrgsOrgIdAppsAppIdEnvsEnvIdRuntime(
-    req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeResponse =
-      new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.runtimeInfoResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.RuntimeInfoResponse
-          );
+    /**
+     * Get Runtime information about the environment.
+     */
+    async getOrgsOrgIdAppsAppIdEnvsEnvIdRuntime(
+        req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeRequest(req);
         }
-        break;
-      case [404, 500].includes(httpRes?.status):
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Get Runtime information about specific environments.
-   */
-  async getOrgsOrgIdAppsAppIdRuntime(
-    req: operations.GetOrgsOrgIdAppsAppIdRuntimeRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdRuntimeResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdRuntimeRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/runtime",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdRuntimeResponse =
-      new operations.GetOrgsOrgIdAppsAppIdRuntimeResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.environmentRuntimeInfoResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.environmentRuntimeInfoResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.EnvironmentRuntimeInfoResponse,
-            resFieldDepth
-          );
-        }
-        break;
-      case [400, 500].includes(httpRes?.status):
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Set number of replicas for an environment's modules.
-   */
-  async patchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicas(
-    req: operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime",
+            req
         );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeResponse =
+            new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.runtimeInfoResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.RuntimeInfoResponse
+                    );
+                }
+                break;
+            case [404, 500].includes(httpRes?.status):
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/replicas",
-      req
-    );
+    /**
+     * Get Runtime information about specific environments.
+     */
+    async getOrgsOrgIdAppsAppIdRuntime(
+        req: operations.GetOrgsOrgIdAppsAppIdRuntimeRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdRuntimeResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdRuntimeRequest(req);
+        }
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/apps/{appId}/runtime", req);
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetOrgsOrgIdAppsAppIdRuntimeResponse =
+            new operations.GetOrgsOrgIdAppsAppIdRuntimeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.environmentRuntimeInfoResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.environmentRuntimeInfoResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.EnvironmentRuntimeInfoResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case [400, 500].includes(httpRes?.status):
+                break;
+        }
+
+        return res;
     }
 
-    const client: AxiosInstance = this._defaultClient;
+    /**
+     * Set number of replicas for an environment's modules.
+     */
+    async patchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicas(
+        req: operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasRequest(req);
+        }
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/replicas",
+            req
+        );
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
 
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasResponse =
+            new operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case [204, 400, 401, 403, 404, 500, 501].includes(httpRes?.status):
+                break;
+        }
+
+        return res;
     }
 
-    const res: operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasResponse =
-      new operations.PatchOrgsOrgIdAppsAppIdEnvsEnvIdRuntimeReplicasResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case [204, 400, 401, 403, 404, 500, 501].includes(httpRes?.status):
-        break;
+    /**
+     * Pause / Resume an environment.
+     *
+     * @remarks
+     * On pause requests, all the Kubernetes Deployment resources are scaled down to 0 replicas.
+     *
+     * On resume requests, all the Kubernetes Deployment resources are scaled up to the number of replicas running before the environment was paused.
+     *
+     * When an environment is paused, it is not possible to:
+     *
+     * ```
+     *   - Deploy the environment within Humanitec.
+     *   - Scale the number of replicas running of any workload.
+     * ```
+     */
+    async putOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePaused(
+        req: operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/paused",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "put",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedResponse =
+            new operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case [204, 400, 401, 403, 404, 500].includes(httpRes?.status):
+                break;
+        }
+
+        return res;
     }
-
-    return res;
-  }
-
-  /**
-   * Pause / Resume an environment.
-   *
-   * @remarks
-   * On pause requests, all the Kubernetes Deployment resources are scaled down to 0 replicas.
-   *
-   * On resume requests, all the Kubernetes Deployment resources are scaled up to the number of replicas running before the environment was paused.
-   *
-   * When an environment is paused, it is not possible to:
-   *
-   * ```
-   *   - Deploy the environment within Humanitec.
-   *   - Scale the number of replicas running of any workload.
-   * ```
-   */
-  async putOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePaused(
-    req: operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedRequest(
-        req
-      );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/runtime/paused",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "put",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedResponse =
-      new operations.PutOrgsOrgIdAppsAppIdEnvsEnvIdRuntimePausedResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case [204, 400, 401, 403, 404, 500].includes(httpRes?.status):
-        break;
-    }
-
-    return res;
-  }
 }

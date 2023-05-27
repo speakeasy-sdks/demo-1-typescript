@@ -13,19 +13,19 @@ import { Expose } from "class-transformer";
  *
  */
 export class ValueCreatePayloadRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "description" })
-  description: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "is_secret" })
-  isSecret?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "is_secret" })
+    isSecret?: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "key" })
-  key: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "key" })
+    key: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "value" })
-  value: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "value" })
+    value: string;
 }

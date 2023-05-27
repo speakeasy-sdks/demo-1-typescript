@@ -17,468 +17,440 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class Registry {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Deletes an existing registry record and all associated credentials and secrets.
-   *
-   * @remarks
-   * _Deletions are currently irreversible._
-   */
-  async deleteOrgsOrgIdRegistriesRegId(
-    req: operations.DeleteOrgsOrgIdRegistriesRegIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdRegistriesRegIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdRegistriesRegIdRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/registries/{regId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdRegistriesRegIdResponse =
-      new operations.DeleteOrgsOrgIdRegistriesRegIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case [400, 403, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.errorInfoResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ErrorInfoResponse
-          );
+    /**
+     * Deletes an existing registry record and all associated credentials and secrets.
+     *
+     * @remarks
+     * _Deletions are currently irreversible._
+     */
+    async deleteOrgsOrgIdRegistriesRegId(
+        req: operations.DeleteOrgsOrgIdRegistriesRegIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdRegistriesRegIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdRegistriesRegIdRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/registries/{regId}", req);
 
-  /**
-   * Lists available registries for the organization.
-   */
-  async getOrgsOrgIdRegistries(
-    req: operations.GetOrgsOrgIdRegistriesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdRegistriesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdRegistriesRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/registries",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdRegistriesResponse =
-      new operations.GetOrgsOrgIdRegistriesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.registryResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.registryResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.RegistryResponse,
-            resFieldDepth
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.errorInfoResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ErrorInfoResponse
-          );
+
+        const res: operations.DeleteOrgsOrgIdRegistriesRegIdResponse =
+            new operations.DeleteOrgsOrgIdRegistriesRegIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case [400, 403, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorInfoResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ErrorInfoResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Loads a registry record details.
-   */
-  async getOrgsOrgIdRegistriesRegId(
-    req: operations.GetOrgsOrgIdRegistriesRegIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdRegistriesRegIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdRegistriesRegIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/registries/{regId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdRegistriesRegIdResponse =
-      new operations.GetOrgsOrgIdRegistriesRegIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 201:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.registryResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.RegistryResponse
-          );
+    /**
+     * Lists available registries for the organization.
+     */
+    async getOrgsOrgIdRegistries(
+        req: operations.GetOrgsOrgIdRegistriesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdRegistriesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdRegistriesRequest(req);
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.errorInfoResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ErrorInfoResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/registries", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Returns current account credentials or secret details for the registry.
-   */
-  async getOrgsOrgIdRegistriesRegIdCreds(
-    req: operations.GetOrgsOrgIdRegistriesRegIdCredsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdRegistriesRegIdCredsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdRegistriesRegIdCredsRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/registries/{regId}/creds",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdRegistriesRegIdCredsResponse =
-      new operations.GetOrgsOrgIdRegistriesRegIdCredsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.registryCredsResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.RegistryCredsResponse
-          );
+        const res: operations.GetOrgsOrgIdRegistriesResponse =
+            new operations.GetOrgsOrgIdRegistriesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.registryResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.registryResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.RegistryResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorInfoResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ErrorInfoResponse
+                    );
+                }
+                break;
         }
-        break;
-      case [400, 401, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.errorInfoResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ErrorInfoResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * Loads a registry record details.
+     */
+    async getOrgsOrgIdRegistriesRegId(
+        req: operations.GetOrgsOrgIdRegistriesRegIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdRegistriesRegIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdRegistriesRegIdRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/registries/{regId}", req);
 
-  /**
-   * Updates (patches) an existing registry record.
-   */
-  async patchOrgsOrgIdRegistriesRegId(
-    req: operations.PatchOrgsOrgIdRegistriesRegIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdRegistriesRegIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PatchOrgsOrgIdRegistriesRegIdRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/registries/{regId}",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "registryRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PatchOrgsOrgIdRegistriesRegIdResponse =
-      new operations.PatchOrgsOrgIdRegistriesRegIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.registryResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.RegistryResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 403, 404, 409].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.errorInfoResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ErrorInfoResponse
-          );
+
+        const res: operations.GetOrgsOrgIdRegistriesRegIdResponse =
+            new operations.GetOrgsOrgIdRegistriesRegIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 201:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.registryResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.RegistryResponse
+                    );
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorInfoResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ErrorInfoResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * Creates a new registry record.
-   */
-  async postOrgsOrgIdRegistries(
-    req: operations.PostOrgsOrgIdRegistriesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdRegistriesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdRegistriesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/registries",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "registryRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdRegistriesResponse =
-      new operations.PostOrgsOrgIdRegistriesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 201:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.registryResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.RegistryResponse
-          );
+    /**
+     * Returns current account credentials or secret details for the registry.
+     */
+    async getOrgsOrgIdRegistriesRegIdCreds(
+        req: operations.GetOrgsOrgIdRegistriesRegIdCredsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdRegistriesRegIdCredsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdRegistriesRegIdCredsRequest(req);
         }
-        break;
-      case [400, 401, 404, 409].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.errorInfoResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ErrorInfoResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/registries/{regId}/creds",
+            req
+        );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.GetOrgsOrgIdRegistriesRegIdCredsResponse =
+            new operations.GetOrgsOrgIdRegistriesRegIdCredsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.registryCredsResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.RegistryCredsResponse
+                    );
+                }
+                break;
+            case [400, 401, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorInfoResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ErrorInfoResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Updates (patches) an existing registry record.
+     */
+    async patchOrgsOrgIdRegistriesRegId(
+        req: operations.PatchOrgsOrgIdRegistriesRegIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdRegistriesRegIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdRegistriesRegIdRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/registries/{regId}", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "registryRequest", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PatchOrgsOrgIdRegistriesRegIdResponse =
+            new operations.PatchOrgsOrgIdRegistriesRegIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.registryResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.RegistryResponse
+                    );
+                }
+                break;
+            case [400, 403, 404, 409].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorInfoResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ErrorInfoResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Creates a new registry record.
+     */
+    async postOrgsOrgIdRegistries(
+        req: operations.PostOrgsOrgIdRegistriesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdRegistriesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdRegistriesRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/registries", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "registryRequest", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdRegistriesResponse =
+            new operations.PostOrgsOrgIdRegistriesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 201:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.registryResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.RegistryResponse
+                    );
+                }
+                break;
+            case [400, 401, 404, 409].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.errorInfoResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ErrorInfoResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

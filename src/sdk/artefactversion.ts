@@ -15,428 +15,413 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class ArtefactVersion {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * List all Artefacts Versions.
-   *
-   * @remarks
-   * Returns the Artefact Versions registered with your organization. If no elements are found, an empty list is returned.
-   */
-  async getOrgsOrgIdArtefactVersions(
-    req: operations.GetOrgsOrgIdArtefactVersionsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdArtefactVersionsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdArtefactVersionsRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/artefact-versions",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdArtefactVersionsResponse =
-      new operations.GetOrgsOrgIdArtefactVersionsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.artefactVersionResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.artefactVersionResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ArtefactVersionResponse,
-            resFieldDepth
-          );
+    /**
+     * List all Artefacts Versions.
+     *
+     * @remarks
+     * Returns the Artefact Versions registered with your organization. If no elements are found, an empty list is returned.
+     */
+    async getOrgsOrgIdArtefactVersions(
+        req: operations.GetOrgsOrgIdArtefactVersionsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdArtefactVersionsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdArtefactVersionsRequest(req);
         }
-        break;
-      case httpRes?.status == 400:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/artefact-versions", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Get an Artefacts Versions.
-   *
-   * @remarks
-   * Returns a specific Artefact Version.
-   */
-  async getOrgsOrgIdArtefactVersionsArtefactVersionId(
-    req: operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdRequest(
-        req
-      );
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/artefact-versions/{artefactVersionId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdResponse =
-      new operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.artefactVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ArtefactVersionResponse
-          );
+        const res: operations.GetOrgsOrgIdArtefactVersionsResponse =
+            new operations.GetOrgsOrgIdArtefactVersionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.artefactVersionResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.artefactVersionResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ArtefactVersionResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 400:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * Get an Artefacts Versions.
+     *
+     * @remarks
+     * Returns a specific Artefact Version.
+     */
+    async getOrgsOrgIdArtefactVersionsArtefactVersionId(
+        req: operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * List all Artefact Versions of an Artefact.
-   *
-   * @remarks
-   * Returns the Artefact Versions of a specified Artefact registered with your organization. If no elements are found, an empty list is returned.
-   */
-  async getOrgsOrgIdArtefactsArtefactIdVersions(
-    req: operations.GetOrgsOrgIdArtefactsArtefactIdVersionsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdArtefactsArtefactIdVersionsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdArtefactsArtefactIdVersionsRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/artefacts/{artefactId}/versions",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdArtefactsArtefactIdVersionsResponse =
-      new operations.GetOrgsOrgIdArtefactsArtefactIdVersionsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.artefactVersionResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.artefactVersionResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ArtefactVersionResponse,
-            resFieldDepth
-          );
-        }
-        break;
-      case [400, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
-        }
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Update Version of an Artefact.
-   *
-   * @remarks
-   * Update the version of a specified Artefact registered with your organization".
-   */
-  async patchOrgsOrgIdArtefactsArtefactIdVersionsVersionId(
-    req: operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/artefact-versions/{artefactVersionId}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/artefacts/{artefactId}/versions/{versionId}",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "updateArtefactVersionPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const client: AxiosInstance = this._defaultClient;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdResponse =
-      new operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-      );
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.artefactVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ArtefactVersionResponse
-          );
+
+        const res: operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdResponse =
+            new operations.GetOrgsOrgIdArtefactVersionsArtefactVersionIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.artefactVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ArtefactVersionResponse
+                    );
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case [400, 401, 403, 404].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * List all Artefact Versions of an Artefact.
+     *
+     * @remarks
+     * Returns the Artefact Versions of a specified Artefact registered with your organization. If no elements are found, an empty list is returned.
+     */
+    async getOrgsOrgIdArtefactsArtefactIdVersions(
+        req: operations.GetOrgsOrgIdArtefactsArtefactIdVersionsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdArtefactsArtefactIdVersionsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdArtefactsArtefactIdVersionsRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/artefacts/{artefactId}/versions",
+            req
+        );
 
-  /**
-   * Register a new Artefact Version with your organization.
-   */
-  async postOrgsOrgIdArtefactVersions(
-    req: operations.PostOrgsOrgIdArtefactVersionsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdArtefactVersionsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdArtefactVersionsRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/artefact-versions",
-      req
-    );
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "addArtefactVersionPayloadRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdArtefactVersionsResponse =
-      new operations.PostOrgsOrgIdArtefactVersionsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.artefactVersionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ArtefactVersionResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [400, 401].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.GetOrgsOrgIdArtefactsArtefactIdVersionsResponse =
+            new operations.GetOrgsOrgIdArtefactsArtefactIdVersionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.artefactVersionResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.artefactVersionResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ArtefactVersionResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case [400, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Update Version of an Artefact.
+     *
+     * @remarks
+     * Update the version of a specified Artefact registered with your organization".
+     */
+    async patchOrgsOrgIdArtefactsArtefactIdVersionsVersionId(
+        req: operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/artefacts/{artefactId}/versions/{versionId}",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "updateArtefactVersionPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdResponse =
+            new operations.PatchOrgsOrgIdArtefactsArtefactIdVersionsVersionIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.artefactVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ArtefactVersionResponse
+                    );
+                }
+                break;
+            case [400, 401, 403, 404].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Register a new Artefact Version with your organization.
+     */
+    async postOrgsOrgIdArtefactVersions(
+        req: operations.PostOrgsOrgIdArtefactVersionsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdArtefactVersionsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdArtefactVersionsRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/artefact-versions", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "addArtefactVersionPayloadRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdArtefactVersionsResponse =
+            new operations.PostOrgsOrgIdArtefactVersionsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.artefactVersionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ArtefactVersionResponse
+                    );
+                }
+                break;
+            case [400, 401].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

@@ -9,24 +9,24 @@ import { Expose } from "class-transformer";
  * AccountCreds represents an account credentials (either, username- or token-based).
  */
 export class AccountCredsRequest extends SpeakeasyBase {
-  /**
-   * Account credentials expiration timestamp.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "expires" })
-  expires?: string;
+    /**
+     * Account credentials expiration timestamp.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "expires" })
+    expires?: string;
 
-  /**
-   * Account password or token secret.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "password" })
-  password: string;
+    /**
+     * Account password or token secret.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "password" })
+    password: string;
 
-  /**
-   * Security account login or token.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "username" })
-  username: string;
+    /**
+     * Security account login or token.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "username" })
+    username: string;
 }

@@ -14,32 +14,32 @@ import { Expose, Type } from "class-transformer";
  * Container Images (known simply as Images) can be registered with Humanitec. Continuous Integration (CI) pipelines can then notify Humanitec when a new build of a Container Image becomes available. Humanitec tracks the Image along with metadata about how it was built.
  */
 export class ImageResponse extends SpeakeasyBase {
-  /**
-   * The time the first build of this Image was added to the organization
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "added_at" })
-  addedAt: string;
+    /**
+     * The time the first build of this Image was added to the organization
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "added_at" })
+    addedAt: string;
 
-  /**
-   * A list of Image Builds ordered by addition date.
-   */
-  @SpeakeasyMetadata({ elemType: ImageBuildResponse })
-  @Expose({ name: "builds" })
-  @Type(() => ImageBuildResponse)
-  builds: ImageBuildResponse[];
+    /**
+     * A list of Image Builds ordered by addition date.
+     */
+    @SpeakeasyMetadata({ elemType: ImageBuildResponse })
+    @Expose({ name: "builds" })
+    @Type(() => ImageBuildResponse)
+    builds: ImageBuildResponse[];
 
-  /**
-   * The ID used to group different builds of the same Image together.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * The ID used to group different builds of the same Image together.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  /**
-   * The Image Source that this Image is added via
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "source" })
-  source: string;
+    /**
+     * The Image Source that this Image is added via
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "source" })
+    source: string;
 }

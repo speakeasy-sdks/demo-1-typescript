@@ -7,68 +7,64 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class DeleteOrgsOrgIdResourcesDefsDefIdRequest extends SpeakeasyBase {
-  /**
-   * The Resource Definition ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=defId",
-  })
-  defId: string;
+    /**
+     * The Resource Definition ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=defId" })
+    defId: string;
 
-  /**
-   * If set to `true`, will mark the Resource Definition for deletion, even if it affects existing Active Resources.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=force" })
-  force?: boolean;
+    /**
+     * If set to `true`, will mark the Resource Definition for deletion, even if it affects existing Active Resources.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=force" })
+    force?: boolean;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class DeleteOrgsOrgIdResourcesDefsDefIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * A Resource Driver with the 'driverId' ID is not found or is not accessible by the organization.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * A Resource Driver with the 'driverId' ID is not found or is not accessible by the organization.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  /**
-   * List of Active Resources that still reference this Resource Definition.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ elemType: shared.ResourceDefinitionChangeResponse })
-  resourceDefinitionChangeResponses?: shared.ResourceDefinitionChangeResponse[];
+    /**
+     * List of Active Resources that still reference this Resource Definition.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ elemType: shared.ResourceDefinitionChangeResponse })
+    resourceDefinitionChangeResponses?: shared.ResourceDefinitionChangeResponse[];
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

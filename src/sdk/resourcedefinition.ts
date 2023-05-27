@@ -17,769 +17,739 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class ResourceDefinition {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Delete a Resource Definition.
-   *
-   * @remarks
-   * If there **are no** Active Resources provisioned via the current definition, the Resource Definition is deleted immediately.
-   *
-   * If there **are** Active Resources provisioned via the current definition, the request fails. The response will describe the changes to the affected Active Resources if operation is forced.
-   *
-   * The request can take an optional `force` query parameter. If set to `true`, the current Resource Definition is **marked as** pending deletion and will be deleted (purged) as soon as no existing Active Resources reference it. With the next deployment matching criteria for Resources will be re-evaluated, and current Active Resources for the target environment would be either linked to another matching Resource Definition or decommissioned and created using the new or default Resource Definition (when available).
-   *
-   * The Resource Definition that has been marked for deletion cannot be used to provision new resources.
-   */
-  async deleteOrgsOrgIdResourcesDefsDefId(
-    req: operations.DeleteOrgsOrgIdResourcesDefsDefIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdResourcesDefsDefIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeleteOrgsOrgIdResourcesDefsDefIdRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs/{defId}",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdResourcesDefsDefIdResponse =
-      new operations.DeleteOrgsOrgIdResourcesDefsDefIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case [404, 500].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+    /**
+     * Delete a Resource Definition.
+     *
+     * @remarks
+     * If there **are no** Active Resources provisioned via the current definition, the Resource Definition is deleted immediately.
+     *
+     * If there **are** Active Resources provisioned via the current definition, the request fails. The response will describe the changes to the affected Active Resources if operation is forced.
+     *
+     * The request can take an optional `force` query parameter. If set to `true`, the current Resource Definition is **marked as** pending deletion and will be deleted (purged) as soon as no existing Active Resources reference it. With the next deployment matching criteria for Resources will be re-evaluated, and current Active Resources for the target environment would be either linked to another matching Resource Definition or decommissioned and created using the new or default Resource Definition (when available).
+     *
+     * The Resource Definition that has been marked for deletion cannot be used to provision new resources.
+     */
+    async deleteOrgsOrgIdResourcesDefsDefId(
+        req: operations.DeleteOrgsOrgIdResourcesDefsDefIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdResourcesDefsDefIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdResourcesDefsDefIdRequest(req);
         }
-        break;
-      case httpRes?.status == 409:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.resourceDefinitionChangeResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.resourceDefinitionChangeResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ResourceDefinitionChangeResponse,
-            resFieldDepth
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/resources/defs/{defId}", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.DeleteOrgsOrgIdResourcesDefsDefIdResponse =
+            new operations.DeleteOrgsOrgIdResourcesDefsDefIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case [404, 500].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+            case httpRes?.status == 409:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.resourceDefinitionChangeResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.resourceDefinitionChangeResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ResourceDefinitionChangeResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Delete a Matching Criteria from a Resource Definition.
+     *
+     * @remarks
+     * If there **are no** Active Resources that would match to a different Resource Definition when the current Matching Criteria is deleted, the Matching Criteria is deleted immediately.
+     *
+     * If there **are** Active Resources that would match to a different Resource Definition, the request fails with HTTP status code 409 (Conflict). The response content will list all of affected Active Resources and their new matches.
+     *
+     * The request can take an optional `force` query parameter. If set to `true`, the Matching Criteria is deleted immediately. Referenced Active Resources would match to a different Resource Definition during the next deployment in the target environment.
+     */
+    async deleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaId(
+        req: operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdRequest(req);
+        }
 
-  /**
-   * Delete a Matching Criteria from a Resource Definition.
-   *
-   * @remarks
-   * If there **are no** Active Resources that would match to a different Resource Definition when the current Matching Criteria is deleted, the Matching Criteria is deleted immediately.
-   *
-   * If there **are** Active Resources that would match to a different Resource Definition, the request fails with HTTP status code 409 (Conflict). The response content will list all of affected Active Resources and their new matches.
-   *
-   * The request can take an optional `force` query parameter. If set to `true`, the Matching Criteria is deleted immediately. Referenced Active Resources would match to a different Resource Definition during the next deployment in the target environment.
-   */
-  async deleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaId(
-    req: operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdRequest(
-          req
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/resources/defs/{defId}/criteria/{criteriaId}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs/{defId}/criteria/{criteriaId}",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    const client: AxiosInstance = this._defaultClient;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0.7, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] =
-      "application/json;q=1, application/json;q=0.7, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdResponse =
-      new operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-      );
-    switch (true) {
-      case httpRes?.status == 204:
-        break;
-      case httpRes?.status == 404:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.deleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaId404ApplicationJSONString =
-            JSON.stringify(httpRes?.data);
+
+        const res: operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdResponse =
+            new operations.DeleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case httpRes?.status == 404:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.deleteOrgsOrgIdResourcesDefsDefIdCriteriaCriteriaId404ApplicationJSONString =
+                        JSON.stringify(httpRes?.data);
+                }
+                break;
+            case httpRes?.status == 409:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.resourceDefinitionChangeResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.resourceDefinitionChangeResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ResourceDefinitionChangeResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 500:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 409:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.resourceDefinitionChangeResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.resourceDefinitionChangeResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ResourceDefinitionChangeResponse,
-            resFieldDepth
-          );
+
+        return res;
+    }
+
+    /**
+     * List Resource Definitions.
+     *
+     * @remarks
+     * Filter criteria can be applied to obtain all the resource definitions that could match the filters, grouped by type and sorted by matching rank.
+     */
+    async getOrgsOrgIdResourcesDefs(
+        req: operations.GetOrgsOrgIdResourcesDefsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdResourcesDefsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdResourcesDefsRequest(req);
         }
-        break;
-      case httpRes?.status == 500:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/resources/defs", req);
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * List Resource Definitions.
-   *
-   * @remarks
-   * Filter criteria can be applied to obtain all the resource definitions that could match the filters, grouped by type and sorted by matching rank.
-   */
-  async getOrgsOrgIdResourcesDefs(
-    req: operations.GetOrgsOrgIdResourcesDefsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdResourcesDefsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdResourcesDefsRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdResourcesDefsResponse =
-      new operations.GetOrgsOrgIdResourcesDefsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.resourceDefinitionResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.resourceDefinitionResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ResourceDefinitionResponse,
-            resFieldDepth
-          );
+        const res: operations.GetOrgsOrgIdResourcesDefsResponse =
+            new operations.GetOrgsOrgIdResourcesDefsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.resourceDefinitionResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.resourceDefinitionResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ResourceDefinitionResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 500:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case httpRes?.status == 500:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * Get a specific Resource Definition.
+     */
+    async getOrgsOrgIdResourcesDefsDefId(
+        req: operations.GetOrgsOrgIdResourcesDefsDefIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdResourcesDefsDefIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdResourcesDefsDefIdRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/resources/defs/{defId}", req);
 
-  /**
-   * Get a specific Resource Definition.
-   */
-  async getOrgsOrgIdResourcesDefsDefId(
-    req: operations.GetOrgsOrgIdResourcesDefsDefIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdResourcesDefsDefIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdResourcesDefsDefIdRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs/{defId}",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdResourcesDefsDefIdResponse =
-      new operations.GetOrgsOrgIdResourcesDefsDefIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.resourceDefinitionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ResourceDefinitionResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case [404, 500].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.GetOrgsOrgIdResourcesDefsDefIdResponse =
+            new operations.GetOrgsOrgIdResourcesDefsDefIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.resourceDefinitionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ResourceDefinitionResponse
+                    );
+                }
+                break;
+            case [404, 500].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
-
-  /**
-   * List Active Resources provisioned via a specific Resource Definition.
-   */
-  async getOrgsOrgIdResourcesDefsDefIdResources(
-    req: operations.GetOrgsOrgIdResourcesDefsDefIdResourcesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdResourcesDefsDefIdResourcesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs/{defId}/resources",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse =
-      new operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.activeResourceResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.activeResourceResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ActiveResourceResponse,
-            resFieldDepth
-          );
+    /**
+     * List Active Resources provisioned via a specific Resource Definition.
+     */
+    async getOrgsOrgIdResourcesDefsDefIdResources(
+        req: operations.GetOrgsOrgIdResourcesDefsDefIdResourcesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdResourcesDefsDefIdResourcesRequest(req);
         }
-        break;
-      case httpRes?.status == 500:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/resources/defs/{defId}/resources",
+            req
+        );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Update a Resource Definition.
-   */
-  async patchOrgsOrgIdResourcesDefsDefId(
-    req: operations.PatchOrgsOrgIdResourcesDefsDefIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PatchOrgsOrgIdResourcesDefsDefIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PatchOrgsOrgIdResourcesDefsDefIdRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs/{defId}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "patchResourceDefinitionRequestRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "patch",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PatchOrgsOrgIdResourcesDefsDefIdResponse =
-      new operations.PatchOrgsOrgIdResourcesDefsDefIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.resourceDefinitionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ResourceDefinitionResponse
-          );
+        const res: operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse =
+            new operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.activeResourceResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.activeResourceResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ActiveResourceResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 500:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case [400, 404, 422, 500].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * Update a Resource Definition.
+     */
+    async patchOrgsOrgIdResourcesDefsDefId(
+        req: operations.PatchOrgsOrgIdResourcesDefsDefIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PatchOrgsOrgIdResourcesDefsDefIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PatchOrgsOrgIdResourcesDefsDefIdRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/resources/defs/{defId}", req);
 
-  /**
-   * Create a new Resource Definition.
-   */
-  async postOrgsOrgIdResourcesDefs(
-    req: operations.PostOrgsOrgIdResourcesDefsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdResourcesDefsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdResourcesDefsRequest(req);
-    }
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "createResourceDefinitionRequestRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdResourcesDefsResponse =
-      new operations.PostOrgsOrgIdResourcesDefsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.resourceDefinitionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ResourceDefinitionResponse
-          );
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "patchResourceDefinitionRequestRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-        break;
-      case [400, 409, 500].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "patch",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * Add a new Matching Criteria to a Resource Definition.
-   *
-   * @remarks
-   * Matching Criteria are combined with Resource Type to select a specific definition. Matching Criteria can be set for any combination of Application ID, Environment ID, Environment Type, and Resource ID. In the event of multiple matches, the most specific match is chosen.
-   *
-   * For example, given 3 sets of matching criteria for the same type:
-   *
-   * ```
-   *  1. {"env_type":"test"}
-   *  2. {"env_type":"development"}
-   *  3. {"env_type":"test", "app_id":"my-app"}
-   * ```
-   *
-   * If, a resource of that time was needed in an Application `my-app`, Environment `qa-team` with Type `test` and Resource ID `modules.my-module-externals.my-resource`, there would be two resources definitions matching the criteria: #1 & #3. Definition #3 will be chosen because it's matching criteria is the most specific.
-   */
-  async postOrgsOrgIdResourcesDefsDefIdCriteria(
-    req: operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs/{defId}/criteria",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "matchingCriteriaRuleRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaResponse =
-      new operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.matchingCriteriaResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.MatchingCriteriaResponse
-          );
+        const res: operations.PatchOrgsOrgIdResourcesDefsDefIdResponse =
+            new operations.PatchOrgsOrgIdResourcesDefsDefIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.resourceDefinitionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ResourceDefinitionResponse
+                    );
+                }
+                break;
+            case [400, 404, 422, 500].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
-      case [400, 409, 422, 500].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * Create a new Resource Definition.
+     */
+    async postOrgsOrgIdResourcesDefs(
+        req: operations.PostOrgsOrgIdResourcesDefsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdResourcesDefsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdResourcesDefsRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/resources/defs", req);
 
-  /**
-   * Update a Resource Definition.
-   */
-  async putOrgsOrgIdResourcesDefsDefId(
-    req: operations.PutOrgsOrgIdResourcesDefsDefIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PutOrgsOrgIdResourcesDefsDefIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PutOrgsOrgIdResourcesDefsDefIdRequest(req);
-    }
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs/{defId}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "updateResourceDefinitionRequestRequest",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "put",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PutOrgsOrgIdResourcesDefsDefIdResponse =
-      new operations.PutOrgsOrgIdResourcesDefsDefIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.resourceDefinitionResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.ResourceDefinitionResponse
-          );
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "createResourceDefinitionRequestRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-        break;
-      case [400, 404, 500].includes(httpRes?.status):
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.PostOrgsOrgIdResourcesDefsResponse =
+            new operations.PostOrgsOrgIdResourcesDefsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.resourceDefinitionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ResourceDefinitionResponse
+                    );
+                }
+                break;
+            case [400, 409, 500].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Add a new Matching Criteria to a Resource Definition.
+     *
+     * @remarks
+     * Matching Criteria are combined with Resource Type to select a specific definition. Matching Criteria can be set for any combination of Application ID, Environment ID, Environment Type, and Resource ID. In the event of multiple matches, the most specific match is chosen.
+     *
+     * For example, given 3 sets of matching criteria for the same type:
+     *
+     * ```
+     *  1. {"env_type":"test"}
+     *  2. {"env_type":"development"}
+     *  3. {"env_type":"test", "app_id":"my-app"}
+     * ```
+     *
+     * If, a resource of that time was needed in an Application `my-app`, Environment `qa-team` with Type `test` and Resource ID `modules.my-module-externals.my-resource`, there would be two resources definitions matching the criteria: #1 & #3. Definition #3 will be chosen because it's matching criteria is the most specific.
+     */
+    async postOrgsOrgIdResourcesDefsDefIdCriteria(
+        req: operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/resources/defs/{defId}/criteria",
+            req
+        );
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "matchingCriteriaRuleRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaResponse =
+            new operations.PostOrgsOrgIdResourcesDefsDefIdCriteriaResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.matchingCriteriaResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.MatchingCriteriaResponse
+                    );
+                }
+                break;
+            case [400, 409, 422, 500].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * Update a Resource Definition.
+     */
+    async putOrgsOrgIdResourcesDefsDefId(
+        req: operations.PutOrgsOrgIdResourcesDefsDefIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PutOrgsOrgIdResourcesDefsDefIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PutOrgsOrgIdResourcesDefsDefIdRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(baseURL, "/orgs/{orgId}/resources/defs/{defId}", req);
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+                req,
+                "updateResourceDefinitionRequestRequest",
+                "json"
+            );
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "put",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PutOrgsOrgIdResourcesDefsDefIdResponse =
+            new operations.PutOrgsOrgIdResourcesDefsDefIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.resourceDefinitionResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ResourceDefinitionResponse
+                    );
+                }
+                break;
+            case [400, 404, 500].includes(httpRes?.status):
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

@@ -7,71 +7,64 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class DeleteOrgsOrgIdEnvTypesEnvTypeIdRequest extends SpeakeasyBase {
-  /**
-   * ID of the Environment Type.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=envTypeId",
-  })
-  envTypeId: string;
+    /**
+     * ID of the Environment Type.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=envTypeId" })
+    envTypeId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class DeleteOrgsOrgIdEnvTypesEnvTypeIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * The Environment Type requested.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  environmentTypeResponse?: shared.EnvironmentTypeResponse;
+    /**
+     * The Environment Type requested.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    environmentTypeResponse?: shared.EnvironmentTypeResponse;
 
-  /**
-   * The Authorization header was not present or invalid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * The Authorization header was not present or invalid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * There are 1 or more Environments with this Type.
-   *
-   * @remarks
-   *
-   * To delete an Environment Type, there can be no Environments with that type in the Organization.
-   */
-  @SpeakeasyMetadata()
-  deleteOrgsOrgIdEnvTypesEnvTypeId409ApplicationJSONObjects?: Record<
-    string,
-    string
-  >[];
+    /**
+     * There are 1 or more Environments with this Type.
+     *
+     * @remarks
+     *
+     * To delete an Environment Type, there can be no Environments with that type in the Organization.
+     */
+    @SpeakeasyMetadata()
+    deleteOrgsOrgIdEnvTypesEnvTypeId409ApplicationJSONObjects?: Record<string, string>[];
 }

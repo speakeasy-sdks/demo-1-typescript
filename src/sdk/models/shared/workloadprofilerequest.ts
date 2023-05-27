@@ -13,10 +13,10 @@ import { Expose } from "class-transformer";
  * Workloads in Humanitec are implemented as Helm Charts which must implement a specific schema.
  */
 export class WorkloadProfileRequest extends SpeakeasyBase {
-  /**
-   * Workload Profile ID
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * Workload Profile ID
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 }

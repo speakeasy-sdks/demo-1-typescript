@@ -7,58 +7,54 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdWorkloadProfilesProfileQidRequest extends SpeakeasyBase {
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * The fully qualified Workload ID. (If not a profile from the current org, must be prefixed with `{orgId}.` e.g. `humanitec.default-cronjob`)
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=profileQid",
-  })
-  profileQid: string;
+    /**
+     * The fully qualified Workload ID. (If not a profile from the current org, must be prefixed with `{orgId}.` e.g. `humanitec.default-cronjob`)
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=profileQid" })
+    profileQid: string;
 }
 
 export class GetOrgsOrgIdWorkloadProfilesProfileQidResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * The requested WorkloadProfile is not found.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * The requested WorkloadProfile is not found.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * The requested WorkloadProfile.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  workloadProfileResponse?: shared.WorkloadProfileResponse;
+    /**
+     * The requested WorkloadProfile.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    workloadProfileResponse?: shared.WorkloadProfileResponse;
 }

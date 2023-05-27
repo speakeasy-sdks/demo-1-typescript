@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class ValueSetActionPayloadRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "comment" })
-  comment?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "comment" })
+    comment?: string;
 }

@@ -9,24 +9,24 @@ import { Expose } from "class-transformer";
  * Events available for triggering automated jobs.
  */
 export class EventResponse extends SpeakeasyBase {
-  /**
-   * List of event properties which can be used as variables for this event
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "properties" })
-  properties: string[];
+    /**
+     * List of event properties which can be used as variables for this event
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "properties" })
+    properties: string[];
 
-  /**
-   * Event scope
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "scope" })
-  scope: string;
+    /**
+     * Event scope
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "scope" })
+    scope: string;
 
-  /**
-   * Event type
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: string;
+    /**
+     * Event type
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: string;
 }

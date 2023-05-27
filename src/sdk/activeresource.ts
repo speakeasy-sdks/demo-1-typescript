@@ -17,227 +17,222 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  *
  */
 export class ActiveResource {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+    }
 
-  /**
-   * Delete Active Resources.
-   */
-  async deleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResId(
-    req: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdRequest(
-          req
+    /**
+     * Delete Active Resources.
+     */
+    async deleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResId(
+        req: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources/{type}/{resId}",
+            req
         );
-    }
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources/{type}/{resId}",
-      req
-    );
+        const client: AxiosInstance = this._defaultClient;
 
-    const client: AxiosInstance = this._defaultClient;
+        const headers = { ...config?.headers };
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdResponse =
-      new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdResponse(
-        {
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-      );
-    switch (true) {
-      case [202, 204, 404, 409].includes(httpRes?.status):
-        break;
-    }
 
-    return res;
-  }
-
-  /**
-   * List Active Resources provisioned in an environment.
-   */
-  async getOrgsOrgIdAppsAppIdEnvsEnvIdResources(
-    req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources",
-      req
-    );
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesResponse =
-      new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.activeResourceResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.activeResourceResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ActiveResourceResponse,
-            resFieldDepth
-          );
+        const res: operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdResponse =
+            new operations.DeleteOrgsOrgIdAppsAppIdEnvsEnvIdResourcesTypeResIdResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case [202, 204, 404, 409].includes(httpRes?.status):
+                break;
         }
-        break;
-      case httpRes?.status == 500:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        return res;
+    }
+
+    /**
+     * List Active Resources provisioned in an environment.
+     */
+    async getOrgsOrgIdAppsAppIdEnvsEnvIdResources(
+        req: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesRequest(req);
         }
-        break;
-    }
 
-    return res;
-  }
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/apps/{appId}/envs/{envId}/resources",
+            req
+        );
 
-  /**
-   * List Active Resources provisioned via a specific Resource Definition.
-   */
-  async getOrgsOrgIdResourcesDefsDefIdResources(
-    req: operations.GetOrgsOrgIdResourcesDefsDefIdResourcesRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOrgsOrgIdResourcesDefsDefIdResourcesRequest(req);
-    }
+        const client: AxiosInstance = this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/orgs/{orgId}/resources/defs/{defId}/resources",
-      req
-    );
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json;q=1, application/json;q=0";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse =
-      new operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.activeResourceResponses = [];
-          const resFieldDepth: number = utils.getResFieldDepth(res);
-          res.activeResourceResponses = utils.objectToClass(
-            httpRes?.data,
-            shared.ActiveResourceResponse,
-            resFieldDepth
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-      case httpRes?.status == 500:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.humanitecErrorResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.HumanitecErrorResponse
-          );
+
+        const res: operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesResponse =
+            new operations.GetOrgsOrgIdAppsAppIdEnvsEnvIdResourcesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.activeResourceResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.activeResourceResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ActiveResourceResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 500:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * List Active Resources provisioned via a specific Resource Definition.
+     */
+    async getOrgsOrgIdResourcesDefsDefIdResources(
+        req: operations.GetOrgsOrgIdResourcesDefsDefIdResourcesRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetOrgsOrgIdResourcesDefsDefIdResourcesRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/orgs/{orgId}/resources/defs/{defId}/resources",
+            req
+        );
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json;q=1, application/json;q=0";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse =
+            new operations.GetOrgsOrgIdResourcesDefsDefIdResourcesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.activeResourceResponses = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.activeResourceResponses = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ActiveResourceResponse,
+                        resFieldDepth
+                    );
+                }
+                break;
+            case httpRes?.status == 500:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.humanitecErrorResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HumanitecErrorResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

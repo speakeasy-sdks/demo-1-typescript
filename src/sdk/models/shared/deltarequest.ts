@@ -42,28 +42,28 @@ import { Expose, Type } from "class-transformer";
  * ```
  */
 export class DeltaRequest extends SpeakeasyBase {
-  /**
-   * Ignored, but can be provided.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    /**
+     * Ignored, but can be provided.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "metadata" })
-  @Type(() => DeltaMetadataRequest)
-  metadata?: DeltaMetadataRequest;
+    @SpeakeasyMetadata()
+    @Expose({ name: "metadata" })
+    @Type(() => DeltaMetadataRequest)
+    metadata?: DeltaMetadataRequest;
 
-  /**
-   * ModuleDeltas groups the different operations together.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "modules" })
-  @Type(() => ModuleDeltasRequest)
-  modules?: ModuleDeltasRequest;
+    /**
+     * ModuleDeltas groups the different operations together.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "modules" })
+    @Type(() => ModuleDeltasRequest)
+    modules?: ModuleDeltasRequest;
 
-  @SpeakeasyMetadata({ elemType: UpdateActionRequest })
-  @Expose({ name: "shared" })
-  @Type(() => UpdateActionRequest)
-  shared?: UpdateActionRequest[];
+    @SpeakeasyMetadata({ elemType: UpdateActionRequest })
+    @Expose({ name: "shared" })
+    @Type(() => UpdateActionRequest)
+    shared?: UpdateActionRequest[];
 }

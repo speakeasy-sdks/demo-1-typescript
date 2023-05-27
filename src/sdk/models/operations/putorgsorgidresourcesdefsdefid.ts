@@ -7,70 +7,66 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PutOrgsOrgIdResourcesDefsDefIdRequest extends SpeakeasyBase {
-  /**
-   * The Resource Definition record details.
-   *
-   * @remarks
-   *
-   * The PUT operation updates a resource definition using the provided payload. An empty driver_account or driver_inputs property will unset the existing values.
-   *
-   * Currently the resource and driver types can't be changed.
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  updateResourceDefinitionRequestRequest: shared.UpdateResourceDefinitionRequestRequest;
+    /**
+     * The Resource Definition record details.
+     *
+     * @remarks
+     *
+     * The PUT operation updates a resource definition using the provided payload. An empty driver_account or driver_inputs property will unset the existing values.
+     *
+     * Currently the resource and driver types can't be changed.
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    updateResourceDefinitionRequestRequest: shared.UpdateResourceDefinitionRequestRequest;
 
-  /**
-   * The Resource Definition ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=defId",
-  })
-  defId: string;
+    /**
+     * The Resource Definition ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=defId" })
+    defId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 }
 
 export class PutOrgsOrgIdResourcesDefsDefIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * One or more request parameters is missing or invalid.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * One or more request parameters is missing or invalid.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  /**
-   * The updated Resource Definition.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  resourceDefinitionResponse?: shared.ResourceDefinitionResponse;
+    /**
+     * The updated Resource Definition.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    resourceDefinitionResponse?: shared.ResourceDefinitionResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

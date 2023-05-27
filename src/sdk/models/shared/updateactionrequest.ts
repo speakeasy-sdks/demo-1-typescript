@@ -15,19 +15,19 @@ import { Expose } from "class-transformer";
  * * `remove` can have have its scope of application applied in its `value`. e.g. `{"scope":"delta"}
  */
 export class UpdateActionRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "from" })
-  from?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "from" })
+    from?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "op" })
-  op?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "op" })
+    op?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "path" })
-  path?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "path" })
+    path?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "value" })
-  value?: any;
+    @SpeakeasyMetadata()
+    @Expose({ name: "value" })
+    value?: any;
 }

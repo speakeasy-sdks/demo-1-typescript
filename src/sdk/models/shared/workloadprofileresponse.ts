@@ -13,39 +13,39 @@ import { Expose, Transform } from "class-transformer";
  * Workloads in Humanitec are implemented as Helm Charts which must implement a specific schema.
  */
 export class WorkloadProfileResponse extends SpeakeasyBase {
-  /**
-   * Creation date
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  @Transform(({ value }) => new Date(value), { toClassOnly: true })
-  createdAt: Date;
+    /**
+     * Creation date
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt: Date;
 
-  /**
-   * User created the profile
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  createdBy: string;
+    /**
+     * User created the profile
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    createdBy: string;
 
-  /**
-   * Workload Profile ID
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    /**
+     * Workload Profile ID
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  /**
-   * The latest version of the profile
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "latest" })
-  latest: string;
+    /**
+     * The latest version of the profile
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "latest" })
+    latest: string;
 
-  /**
-   * Organization ID
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "org_id" })
-  orgId: string;
+    /**
+     * Organization ID
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "org_id" })
+    orgId: string;
 }

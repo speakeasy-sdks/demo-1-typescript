@@ -7,66 +7,64 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdArtefactVersionsRequest extends SpeakeasyBase {
-  /**
-   * The data needed to register a new Artefact Version within the organization.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  addArtefactVersionPayloadRequest: shared.AddArtefactVersionPayloadRequest;
+    /**
+     * The data needed to register a new Artefact Version within the organization.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    addArtefactVersionPayloadRequest: shared.AddArtefactVersionPayloadRequest;
 
-  /**
-   * The organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * (Optional) Which version control system the version comes from. Default value is "git". If this parameter is not supplied or its value is "git", the provided ref, if not empty, is checked to ensure that it has the prefix "refs/".
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=vcs" })
-  vcs?: string;
+    /**
+     * (Optional) Which version control system the version comes from. Default value is "git". If this parameter is not supplied or its value is "git", the provided ref, if not empty, is checked to ensure that it has the prefix "refs/".
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=vcs" })
+    vcs?: string;
 }
 
 export class PostOrgsOrgIdArtefactVersionsResponse extends SpeakeasyBase {
-  /**
-   * An Artefact Version.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  artefactVersionResponse?: shared.ArtefactVersionResponse;
+    /**
+     * An Artefact Version.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    artefactVersionResponse?: shared.ArtefactVersionResponse;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Either one or more request body parameters are missing or invalid, or the requested payload is not provided or malformed.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Either one or more request body parameters are missing or invalid, or the requested payload is not provided or malformed.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

@@ -7,70 +7,64 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOrgsOrgIdWorkloadProfilesProfileQidVersionsRequest extends SpeakeasyBase {
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * The Workload profile qualified ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=profileQid",
-  })
-  profileQid: string;
+    /**
+     * The Workload profile qualified ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=profileQid" })
+    profileQid: string;
 
-  /**
-   * Optional query parameter, defines version constraint pattern (https://github.com/Masterminds/semver#checking-version-constraints).
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=version",
-  })
-  version?: string;
+    /**
+     * Optional query parameter, defines version constraint pattern (https://github.com/Masterminds/semver#checking-version-constraints).
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=version" })
+    version?: string;
 }
 
 export class GetOrgsOrgIdWorkloadProfilesProfileQidVersionsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Workload Profile Versions not found or not accessible by the organization.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Workload Profile Versions not found or not accessible by the organization.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * A possibly empty list of Workload Profile Versions.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({ elemType: shared.WorkloadProfileVersionResponse })
-  workloadProfileVersionResponses?: shared.WorkloadProfileVersionResponse[];
+    /**
+     * A possibly empty list of Workload Profile Versions.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ elemType: shared.WorkloadProfileVersionResponse })
+    workloadProfileVersionResponses?: shared.WorkloadProfileVersionResponse[];
 }

@@ -9,31 +9,31 @@ import { Expose } from "class-transformer";
  * CreateResourceAccountRequest describes the request to create a new security account.
  */
 export class CreateResourceAccountRequestRequest extends SpeakeasyBase {
-  /**
-   * Credentials associated with the account.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "credentials" })
-  credentials?: Record<string, any>;
+    /**
+     * Credentials associated with the account.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "credentials" })
+    credentials?: Record<string, any>;
 
-  /**
-   * Unique identifier for the account (in scope of the organization it belongs to).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    /**
+     * Unique identifier for the account (in scope of the organization it belongs to).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  /**
-   * Display name.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name?: string;
+    /**
+     * Display name.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name?: string;
 
-  /**
-   * The type of the account
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type?: string;
+    /**
+     * The type of the account
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type?: string;
 }

@@ -9,38 +9,38 @@ import { Expose } from "class-transformer";
  * UserInvite stores the invitation details.
  */
 export class UserInviteResponse extends SpeakeasyBase {
-  /**
-   * The timestamp this invitation was created.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_at" })
-  createdAt: string;
+    /**
+     * The timestamp this invitation was created.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_at" })
+    createdAt: string;
 
-  /**
-   * The ID of the user who created this invitation.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "created_by" })
-  createdBy: string;
+    /**
+     * The ID of the user who created this invitation.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "created_by" })
+    createdBy: string;
 
-  /**
-   * The email address of the user from the profile.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "email" })
-  email?: string;
+    /**
+     * The email address of the user from the profile.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "email" })
+    email?: string;
 
-  /**
-   * The timestamp this invitation would expire.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "expires_at" })
-  expiresAt: string;
+    /**
+     * The timestamp this invitation would expire.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "expires_at" })
+    expiresAt: string;
 
-  /**
-   * The User ID for this user.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "user_id" })
-  userId: string;
+    /**
+     * The User ID for this user.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "user_id" })
+    userId: string;
 }

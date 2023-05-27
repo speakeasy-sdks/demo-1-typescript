@@ -7,90 +7,84 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class PostOrgsOrgIdAppsAppIdSetsSetIdRequest extends SpeakeasyBase {
-  /**
-   * The Delta to apply to the Set.
-   *
-   * @remarks
-   *
-   * NOTE: The `id` parameter is ignored if provided. The request body should be the full Delta.
-   */
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  deltaRequest: shared.DeltaRequest;
+    /**
+     * The Delta to apply to the Set.
+     *
+     * @remarks
+     *
+     * NOTE: The `id` parameter is ignored if provided. The request body should be the full Delta.
+     */
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    deltaRequest: shared.DeltaRequest;
 
-  /**
-   * The Application ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=appId",
-  })
-  appId: string;
+    /**
+     * The Application ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=appId" })
+    appId: string;
 
-  /**
-   * The Organization ID.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=orgId",
-  })
-  orgId: string;
+    /**
+     * The Organization ID.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=orgId" })
+    orgId: string;
 
-  /**
-   * ID of the Deployment Set.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=setId",
-  })
-  setId: string;
+    /**
+     * ID of the Deployment Set.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=setId" })
+    setId: string;
 }
 
 export class PostOrgsOrgIdAppsAppIdSetsSetIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Deployment Delta is incompatible with the Deployment Set specified by `setId`.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  humanitecErrorResponse?: shared.HumanitecErrorResponse;
+    /**
+     * Deployment Delta is incompatible with the Deployment Set specified by `setId`.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    humanitecErrorResponse?: shared.HumanitecErrorResponse;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * A Deployment Delta which if applied to the Set with ID `sourceSetId` gives the Set with ID `setId`.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  postOrgsOrgIdAppsAppIdSetsSetId200ApplicationJSONString?: string;
+    /**
+     * A Deployment Delta which if applied to the Set with ID `sourceSetId` gives the Set with ID `setId`.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    postOrgsOrgIdAppsAppIdSetsSetId200ApplicationJSONString?: string;
 
-  /**
-   * No Deployment Set with ID `setId` found in Application.
-   *
-   * @remarks
-   *
-   *
-   */
-  @SpeakeasyMetadata()
-  postOrgsOrgIdAppsAppIdSetsSetId404ApplicationJSONString?: string;
+    /**
+     * No Deployment Set with ID `setId` found in Application.
+     *
+     * @remarks
+     *
+     *
+     */
+    @SpeakeasyMetadata()
+    postOrgsOrgIdAppsAppIdSetsSetId404ApplicationJSONString?: string;
 }
