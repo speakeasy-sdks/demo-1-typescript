@@ -28,6 +28,7 @@ src/sdk/workloadprofile.ts
 src/sdk/public.ts
 src/sdk/sdk.ts
 .eslintrc.yml
+.gitignore
 jest.config.js
 package-lock.json
 package.json
