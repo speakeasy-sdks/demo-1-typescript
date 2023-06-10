@@ -1,0 +1,12 @@
+# GetOrgsOrgIdAppsAppIdEnvsEnvIdDeploysDeployIdResponse
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `contentType`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `deploymentResponse`                                                           | [shared.DeploymentResponse](../../models/shared/deploymentresponse.md)         | :heavy_minus_sign:                                                             | The Deployment requested.<br/><br/>                                            |
+| `humanitecErrorResponse`                                                       | [shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                             | No Deployment with `deployId` in Application and Environment.<br/><br/>        |
+| `statusCode`                                                                   | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `rawResponse`                                                                  | [AxiosResponse>](https://axios-http.com/docs/res_schema)                       | :heavy_minus_sign:                                                             | N/A                                                                            |

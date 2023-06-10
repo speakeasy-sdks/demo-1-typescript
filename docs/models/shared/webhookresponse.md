@@ -1,0 +1,17 @@
+# WebhookResponse
+
+Webhook is a special type of a Job, it performs a HTTPS request to a specified URL with specified headers.
+
+
+## Fields
+
+| Field                                                           | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `createdAt`                                                     | *string*                                                        | :heavy_minus_sign:                                              | The timestamp of when this Job was created.                     | 2020-06-22T09:37:23.523Z                                        |
+| `createdBy`                                                     | *string*                                                        | :heavy_minus_sign:                                              | The user who created this Job                                   |                                                                 |
+| `disabled`                                                      | *boolean*                                                       | :heavy_check_mark:                                              | Defines whether this job is currently disabled.                 |                                                                 |
+| `headers`                                                       | Record<string, *any*>                                           | :heavy_check_mark:                                              | N/A                                                             |                                                                 |
+| `id`                                                            | *string*                                                        | :heavy_check_mark:                                              | Job ID, unique within the Organization                          |                                                                 |
+| `payload`                                                       | Record<string, *any*>                                           | :heavy_check_mark:                                              | N/A                                                             |                                                                 |
+| `triggers`                                                      | [EventBaseResponse](../../models/shared/eventbaseresponse.md)[] | :heavy_check_mark:                                              | A list of Events by which the Job is triggered                  |                                                                 |
+| `url`                                                           | *string*                                                        | :heavy_check_mark:                                              | Thw webhook's URL (without protocol, only HTTPS is supported)   |                                                                 |

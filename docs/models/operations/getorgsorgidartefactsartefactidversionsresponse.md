@@ -1,0 +1,12 @@
+# GetOrgsOrgIdArtefactsArtefactIdVersionsResponse
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `artefactVersionResponses`                                                         | [shared.ArtefactVersionResponse](../../models/shared/artefactversionresponse.md)[] | :heavy_minus_sign:                                                                 | Returns all Versions of the specified Artefact.<br/><br/>                          |
+| `contentType`                                                                      | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `humanitecErrorResponse`                                                           | [shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md)     | :heavy_minus_sign:                                                                 | Invalid inputs provided.<br/><br/>                                                 |
+| `statusCode`                                                                       | *number*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `rawResponse`                                                                      | [AxiosResponse>](https://axios-http.com/docs/res_schema)                           | :heavy_minus_sign:                                                                 | N/A                                                                                |

@@ -1,0 +1,12 @@
+# PostOrgsOrgIdAppsAppIdEnvsResponse
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `contentType`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `environmentResponse`                                                          | [shared.EnvironmentResponse](../../models/shared/environmentresponse.md)       | :heavy_minus_sign:                                                             | The new Environment.<br/><br/>                                                 |
+| `humanitecErrorResponse`                                                       | [shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                             | The supplied `id` is an invalid ID or a required field is missing.<br/><br/>   |
+| `statusCode`                                                                   | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `rawResponse`                                                                  | [AxiosResponse>](https://axios-http.com/docs/res_schema)                       | :heavy_minus_sign:                                                             | N/A                                                                            |

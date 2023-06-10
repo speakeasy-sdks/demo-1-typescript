@@ -1,0 +1,9 @@
+# PostOrgsOrgIdResourcesDefsRequest
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `createResourceDefinitionRequestRequest`                                                                       | [shared.CreateResourceDefinitionRequestRequest](../../models/shared/createresourcedefinitionrequestrequest.md) | :heavy_check_mark:                                                                                             | The Resource Definition details.<br/><br/>                                                                     |
+| `orgId`                                                                                                        | *string*                                                                                                       | :heavy_check_mark:                                                                                             | The Organization ID.<br/><br/>                                                                                 |

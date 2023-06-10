@@ -1,0 +1,12 @@
+# GetOrgsOrgIdImagesImageIdBuildsResponse
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `contentType`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `humanitecErrorResponse`                                                       | [shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                             | No Image with an ID of `imageId` found within the organization.<br/><br/>      |
+| `imageBuildResponses`                                                          | [shared.ImageBuildResponse](../../models/shared/imagebuildresponse.md)[]       | :heavy_minus_sign:                                                             | Possibly empty list of Builds of Container Images.<br/><br/>                   |
+| `statusCode`                                                                   | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `rawResponse`                                                                  | [AxiosResponse>](https://axios-http.com/docs/res_schema)                       | :heavy_minus_sign:                                                             | N/A                                                                            |

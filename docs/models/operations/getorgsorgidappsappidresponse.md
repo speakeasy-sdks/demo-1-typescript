@@ -1,0 +1,12 @@
+# GetOrgsOrgIdAppsAppIdResponse
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `applicationResponse`                                                          | [shared.ApplicationResponse](../../models/shared/applicationresponse.md)       | :heavy_minus_sign:                                                             | The Application requested.<br/><br/>                                           |
+| `contentType`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `humanitecErrorResponse`                                                       | [shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                             | No Application with ID `appId` in Organization.<br/><br/>                      |
+| `statusCode`                                                                   | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `rawResponse`                                                                  | [AxiosResponse>](https://axios-http.com/docs/res_schema)                       | :heavy_minus_sign:                                                             | N/A                                                                            |

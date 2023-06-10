@@ -1,0 +1,12 @@
+# GetOrgsOrgIdResponse
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `contentType`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `errorInfoResponse`                                                        | [shared.ErrorInfoResponse](../../models/shared/errorinforesponse.md)       | :heavy_minus_sign:                                                         | Invalid request parameters or payload. E.g. invalid `orgId` format.<br/><br/> |
+| `organizationResponse`                                                     | [shared.OrganizationResponse](../../models/shared/organizationresponse.md) | :heavy_minus_sign:                                                         | Returns organization details.<br/><br/>                                    |
+| `statusCode`                                                               | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `rawResponse`                                                              | [AxiosResponse>](https://axios-http.com/docs/res_schema)                   | :heavy_minus_sign:                                                         | N/A                                                                        |

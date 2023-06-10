@@ -1,0 +1,11 @@
+# DeleteOrgsOrgIdUsersUserIdResponse
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `contentType`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `humanitecErrorResponse`                                                       | [shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md) | :heavy_minus_sign:                                                             | The request was invalid or the payload malformed.<br/><br/>                    |
+| `statusCode`                                                                   | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `rawResponse`                                                                  | [AxiosResponse>](https://axios-http.com/docs/res_schema)                       | :heavy_minus_sign:                                                             | N/A                                                                            |

@@ -1,0 +1,11 @@
+# PutOrgsOrgIdAppsAppIdValuesKeyRequest
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `valueEditPayloadRequest`                                                            | [shared.ValueEditPayloadRequest](../../models/shared/valueeditpayloadrequest.md)     | :heavy_check_mark:                                                                   | Both `value` and `description` must be supplied. All other fields will be ignored.<br/><br/> |
+| `appId`                                                                              | *string*                                                                             | :heavy_check_mark:                                                                   | The Application ID.<br/><br/>                                                        |
+| `key`                                                                                | *string*                                                                             | :heavy_check_mark:                                                                   | The key to update.<br/><br/>                                                         |
+| `orgId`                                                                              | *string*                                                                             | :heavy_check_mark:                                                                   | The Organization ID.<br/><br/>                                                       |

@@ -1,0 +1,12 @@
+# GetOrgsOrgIdRegistriesRegIdCredsResponse
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `contentType`                                                                | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `errorInfoResponse`                                                          | [shared.ErrorInfoResponse](../../models/shared/errorinforesponse.md)         | :heavy_minus_sign:                                                           | Request parameters are incomplete or invalid.<br/><br/>                      |
+| `registryCredsResponse`                                                      | [shared.RegistryCredsResponse](../../models/shared/registrycredsresponse.md) | :heavy_minus_sign:                                                           | Current account credentials or secret details for the registry.<br/><br/>    |
+| `statusCode`                                                                 | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `rawResponse`                                                                | [AxiosResponse>](https://axios-http.com/docs/res_schema)                     | :heavy_minus_sign:                                                           | N/A                                                                          |

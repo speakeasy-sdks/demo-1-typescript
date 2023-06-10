@@ -1,0 +1,12 @@
+# GetOrgsOrgIdEnvTypesEnvTypeIdResponse
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `contentType`                                                                    | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `environmentTypeResponse`                                                        | [shared.EnvironmentTypeResponse](../../models/shared/environmenttyperesponse.md) | :heavy_minus_sign:                                                               | The Environment Type requested.<br/><br/>                                        |
+| `humanitecErrorResponse`                                                         | [shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md)   | :heavy_minus_sign:                                                               | No Environment Type with `id` in Organization.<br/><br/>                         |
+| `statusCode`                                                                     | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `rawResponse`                                                                    | [AxiosResponse>](https://axios-http.com/docs/res_schema)                         | :heavy_minus_sign:                                                               | N/A                                                                              |

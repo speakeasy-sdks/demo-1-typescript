@@ -1,0 +1,10 @@
+# PostOrgsOrgIdResourcesDefsDefIdCriteriaRequest
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `matchingCriteriaRuleRequest`                                                            | [shared.MatchingCriteriaRuleRequest](../../models/shared/matchingcriteriarulerequest.md) | :heavy_check_mark:                                                                       | Matching Criteria rules.<br/><br/>                                                       |
+| `defId`                                                                                  | *string*                                                                                 | :heavy_check_mark:                                                                       | The Resource Definition ID.<br/><br/>                                                    |
+| `orgId`                                                                                  | *string*                                                                                 | :heavy_check_mark:                                                                       | The Organization ID.<br/><br/>                                                           |

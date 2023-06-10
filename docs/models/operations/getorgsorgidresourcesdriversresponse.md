@@ -1,0 +1,12 @@
+# GetOrgsOrgIdResourcesDriversResponse
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `contentType`                                                                        | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `driverDefinitionResponses`                                                          | [shared.DriverDefinitionResponse](../../models/shared/driverdefinitionresponse.md)[] | :heavy_minus_sign:                                                                   | A possibly empty list of Resources Drivers.<br/><br/>                                |
+| `humanitecErrorResponse`                                                             | [shared.HumanitecErrorResponse](../../models/shared/humanitecerrorresponse.md)       | :heavy_minus_sign:                                                                   | Internal application error.<br/><br/>                                                |
+| `statusCode`                                                                         | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `rawResponse`                                                                        | [AxiosResponse>](https://axios-http.com/docs/res_schema)                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
